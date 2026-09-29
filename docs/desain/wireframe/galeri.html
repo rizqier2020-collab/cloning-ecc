@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Galeri Kegiatan — MTs Contoh Al-Hikmah</title>
+  <meta name="description" content="Wireframe v2 galeri kegiatan MTs Contoh Al-Hikmah, Kota Contoh (data contoh).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#konten">Langsung ke konten utama</a>
+
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="wordmark" href="beranda.html">Al-Hikmah</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-utama">
+        <span class="menu-toggle__bars" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+      <nav class="site-nav" id="menu-utama" aria-label="Menu utama">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="guru-staf.html">Profil</a></li>
+          <li class="nav__item--sub"><a class="nav__link nav__sub" href="guru-staf.html">Guru &amp; Staf</a></li>
+          <li><a class="nav__link" href="beranda.html#program">Akademik</a></li>
+          <li><a class="nav__link" href="beranda.html#kabar">Informasi</a></li>
+          <li><a class="nav__link" href="galeri.html" aria-current="page">Galeri</a></li>
+          <li><a class="nav__link" href="beranda.html#kontak">Kontak</a></li>
+          <li><a class="nav__cta" href="beranda.html#ppdb">Daftar PPDB</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="konten">
+    <section class="section page-intro" aria-labelledby="galeri-judul">
+      <div class="container">
+        <span class="display__dot" aria-hidden="true"></span>
+        <h1 id="galeri-judul" class="display">Galeri<br>Kegiatan</h1>
+        <p class="lead page-intro__lead">Dokumentasi kegiatan belajar, ibadah, ekstrakurikuler, dan prestasi siswa MTs Contoh Al-Hikmah.</p>
+
+        <div class="filter-bar">
+          <ul class="filter" aria-label="Saring berdasarkan kategori">
+          <li><button class="filter__btn" type="button" data-filter="semua" aria-pressed="true">Semua</button></li>
+          <li><button class="filter__btn" type="button" data-filter="akademik" aria-pressed="false">Akademik</button></li>
+          <li><button class="filter__btn" type="button" data-filter="keagamaan" aria-pressed="false">Keagamaan</button></li>
+          <li><button class="filter__btn" type="button" data-filter="ekstrakurikuler" aria-pressed="false">Ekstrakurikuler</button></li>
+          <li><button class="filter__btn" type="button" data-filter="prestasi" aria-pressed="false">Prestasi</button></li>
+          </ul>
+          <p class="filter-status label label--muted" role="status" aria-live="polite">9 kegiatan</p>
+        </div>
+
+        <ul class="gallery">
+          <li class="gallery__item" data-kategori="keagamaan">
+            <a class="work zoom gallery__card" href="#">
+              <div class="media"><div class="ph ph--color ratio-tall" role="img" aria-label="Foto santri mengenakan toga wisuda tahfiz di panggung aula (placeholder)">[ foto kegiatan ]</div></div>
+              <div class="work__body">
+                <p class="work__cat label label--accent">Keagamaan</p>
+                <h2 class="work__title">Wisuda Tahfiz 2026</h2>
+                <p class="meta work__meta">Aula · Jun 2026</p>
+              </div>
+            </a>
+          </li>
+          <li class="gallery__item" data-kategori="ekstrakurikuler">
+            <a class="work zoom gallery__card" href="#">
+              <div class="media"><div class="ph ph--color ratio-square" role="img" aria-label="Foto regu pramuka mendirikan tenda di bumi perkemahan (placeholder)">[ foto kegiatan ]</div></div>
+              <div class="work__body">
+                <p class="work__cat label label--accent">Ekstrakurikuler</p>
+                <h2 class="work__title">Perkemahan Pramuka</h2>
+                <p class="meta work__meta">Bumi Perkemahan · Agu 2026</p>
+              </div>
+            </a>
+          </li>
+          <li class="gallery__item" data-kategori="akademik">
+            <a class="work zoom gallery__card" href="#">
+              <div class="media"><div class="ph ph--color ratio-portrait" role="img" aria-label="Foto siswa mengamati preparat dengan mikroskop (placeholder)">[ foto kegiatan ]</div></div>
+              <div class="work__body">
+                <p class="work__cat label label--accent">Akademik</p>
+                <h2 class="work__title">Praktikum IPA</h2>
+                <p class="meta work__meta">Laboratorium · Sep 2026</p>
+              </div>
+            </a>
+          </li>
+          <li class="gallery__item" data-kategori="prestasi">
+            <a class="work zoom gallery__card" href="#">
+              <div class="media"><div class="ph ph--color ratio-square" role="img" aria-label="Foto siswi memegang piala juara MTQ (placeholder)">[ foto kegiatan ]</div></div>
+              <div class="work__body">
+                <p class="work__cat label label--accent">Prestasi</p>
+                <h2 class="work__title">Juara MTQ Kabupaten</h2>
+                <p class="meta work__meta">Kabupaten Contoh · Sep 2026</p>
+              </div>
+            </a>
+          </li>
+          <li class="gallery__item" data-kategori="akademik">
+            <a class="work zoom gallery__card" href="#">
+              <div class="media"><div class="ph ph--color ratio-tall" role="img" aria-label="Foto siswa tampil pidato berbahasa Arab (placeholder)">[ foto kegiatan ]</div></div>
+              <div class="work__body">
+                <p class="work__cat label label--accent">Akademik</p>
+                <h2 class="work__title">Pekan Bahasa Arab</h2>
+                <p class="meta work__meta">Halaman madrasah · Sep 2026</p>
+              </div>
+            </a>
+          </li>
+          <li class="gallery__item" data-kategori="keagamaan">
+            <a class="work zoom gallery__card" href="#">
+              <div class="media"><div class="ph ph--color ratio-portrait" role="img" aria-label="Foto hadrah mengiringi peringatan Maulid Nabi (placeholder)">[ foto kegiatan ]</div></div>
+              <div class="work__body">
+                <p class="work__cat label label--accent">Keagamaan</p>
+                <h2 class="work__title">Maulid Nabi</h2>
+                <p class="meta work__meta">Masjid madrasah · Sep 2026</p>
+              </div>
+            </a>
+          </li>
+          <li class="gallery__item" data-kategori="ekstrakurikuler">
+            <a class="work zoom gallery__card" href="#">
+              <div class="media"><div class="ph ph--color ratio-portrait" role="img" aria-label="Foto pertandingan futsal antarkelas (placeholder)">[ foto kegiatan ]</div></div>
+              <div class="work__body">
+                <p class="work__cat label label--accent">Ekstrakurikuler</p>
+                <h2 class="work__title">Class Meeting</h2>
+                <p class="meta work__meta">Lapangan · Des 2025</p>
+              </div>
+            </a>
+          </li>
+          <li class="gallery__item" data-kategori="prestasi">
+            <a class="work zoom gallery__card" href="#">
+              <div class="media"><div class="ph ph--color ratio-tall" role="img" aria-label="Foto tim KSM berfoto dengan medali (placeholder)">[ foto kegiatan ]</div></div>
+              <div class="work__body">
+                <p class="work__cat label label--accent">Prestasi</p>
+                <h2 class="work__title">KSM Tingkat Provinsi</h2>
+                <p class="meta work__meta">Kota Provinsi · Agu 2026</p>
+              </div>
+            </a>
+          </li>
+          <li class="gallery__item" data-kategori="keagamaan">
+            <a class="work zoom gallery__card" href="#">
+              <div class="media"><div class="ph ph--color ratio-square" role="img" aria-label="Foto siswa berpakaian ihram mengelilingi replika Ka'bah (placeholder)">[ foto kegiatan ]</div></div>
+              <div class="work__body">
+                <p class="work__cat label label--accent">Keagamaan</p>
+                <h2 class="work__title">Manasik Haji</h2>
+                <p class="meta work__meta">Lapangan · Mei 2026</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__grid">
+      <a class="wordmark" href="beranda.html">Al-Hikmah</a>
+      <nav aria-label="Tautan footer">
+        <ul class="footer-links">
+          <li><a href="guru-staf.html">Profil</a></li>
+          <li><a href="beranda.html#program">Akademik</a></li>
+          <li><a href="beranda.html#kabar">Informasi</a></li>
+          <li><a href="galeri.html">Galeri</a></li>
+          <li><a href="beranda.html#ppdb">PPDB</a></li>
+          <li><a href="beranda.html#kontak">Kontak</a></li>
+        </ul>
+      </nav>
+      <p class="footer-legal">NSM 121200000000 · NPSN 00000000<br>© 2026 MTs Contoh Al-Hikmah</p>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    document.documentElement.classList.add('js');
+
+    /* Menu HP */
+    var toggle = document.querySelector('.menu-toggle');
+    var nav = document.getElementById('menu-utama');
+    function setMenu(open) {
+      toggle.setAttribute('aria-expanded', String(open));
+      nav.classList.toggle('is-open', open);
+    }
+    toggle.addEventListener('click', function () { setMenu(toggle.getAttribute('aria-expanded') !== 'true'); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { setMenu(false); toggle.focus(); }
+    });
+
+    /* Filter kategori */
+    var buttons = document.querySelectorAll('.filter__btn');
+    var items = document.querySelectorAll('.gallery__item');
+    var status = document.querySelector('.filter-status');
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var f = btn.dataset.filter, shown = 0;
+        buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+        items.forEach(function (it) {
+          var match = f === 'semua' || it.dataset.kategori === f;
+          it.hidden = !match;
+          if (match) shown++;
+        });
+        status.textContent = shown + ' kegiatan';
+      });
+    });
+  })();
+  </script>
+</body>
+</html>

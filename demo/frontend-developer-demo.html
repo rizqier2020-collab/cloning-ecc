@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Pricing Plans</title>
+<style>
+  :root {
+    --bg: #f6f7fb;
+    --surface: #ffffff;
+    --text: #14161f;
+    --muted: #5a6072;
+    --border: #dde1ea;
+    --accent: #4338ca;
+    --accent-contrast: #ffffff;
+    --accent-soft: #eef0ff;
+    --success: #047857;
+    --focus: #2563eb;
+    --shadow: 0 1px 2px rgb(0 0 0 / .04), 0 8px 24px rgb(20 22 31 / .06);
+    --radius: 16px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0e1016;
+      --surface: #171a23;
+      --text: #eceef4;
+      --muted: #a3a9ba;
+      --border: #2a2f3d;
+      --accent: #a5b4fc;
+      --accent-contrast: #111327;
+      --accent-soft: #1f2340;
+      --success: #6ee7b7;
+      --focus: #93c5fd;
+      --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 8px 24px rgb(0 0 0 / .35);
+    }
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  .visually-hidden {
+    position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+  .skip-link {
+    position: absolute; left: 16px; top: -48px; padding: 8px 12px;
+    background: var(--surface); color: var(--text); border-radius: 8px; z-index: 10;
+  }
+  .skip-link:focus { top: 16px; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+  main {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: clamp(32px, 6vw, 72px) 16px;
+  }
+  header { text-align: center; margin-bottom: 32px; }
+  h1 { font-size: clamp(1.75rem, 4vw + .5rem, 2.5rem); line-height: 1.15; margin: 0 0 8px; letter-spacing: -.02em; }
+  .lede { color: var(--muted); margin: 0 auto; max-width: 42ch; }
+
+  /* Billing toggle */
+  .billing {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+    gap: 12px; margin: 24px 0 40px;
+  }
+  .billing-label { font-weight: 600; color: var(--muted); cursor: pointer; user-select: none; }
+  .billing-label[data-active="true"] { color: var(--text); }
+  .switch {
+    position: relative; width: 56px; height: 32px; padding: 0; flex: none;
+    border: 2px solid var(--border); border-radius: 999px;
+    background: var(--surface); cursor: pointer;
+    transition: background-color .2s, border-color .2s;
+  }
+  .switch::after {
+    content: ""; position: absolute; top: 2px; left: 2px;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--muted);
+    transition: transform .2s ease, background-color .2s;
+  }
+  .switch[aria-checked="true"] { background: var(--accent); border-color: var(--accent); }
+  .switch[aria-checked="true"]::after { transform: translateX(24px); background: var(--accent-contrast); }
+  .save-badge {
+    font-size: .8125rem; font-weight: 700; color: var(--success);
+    background: color-mix(in srgb, var(--success) 14%, transparent);
+    padding: 2px 10px; border-radius: 999px;
+  }
+
+  /* Cards */
+  .plans {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    align-items: stretch;
+  }
+  .card {
+    position: relative;
+    display: flex; flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    box-shadow: var(--shadow);
+  }
+  .card--featured { border: 2px solid var(--accent); }
+  .ribbon {
+    position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+    background: var(--accent); color: var(--accent-contrast);
+    font-size: .75rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+    padding: 3px 12px; border-radius: 999px; white-space: nowrap;
+  }
+  .card h2 { font-size: 1.25rem; margin: 0 0 4px; }
+  .card .tagline { color: var(--muted); margin: 0 0 20px; font-size: .9375rem; }
+  .price { display: flex; align-items: baseline; gap: 4px; margin: 0; }
+  .amount { font-size: 2.5rem; font-weight: 800; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+  .period { color: var(--muted); }
+  .billed-note { color: var(--muted); font-size: .875rem; margin: 4px 0 24px; min-height: 1.5em; }
+  .features { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 10px; }
+  .features li { display: flex; gap: 10px; align-items: flex-start; }
+  .features svg { flex: none; margin-top: 3px; color: var(--success); }
+  .cta {
+    margin-top: auto;
+    display: block; text-align: center; text-decoration: none;
+    font: inherit; font-weight: 700;
+    padding: 12px 16px; min-height: 44px; border-radius: 10px;
+    border: 2px solid var(--accent); color: var(--accent); background: transparent;
+    cursor: pointer; transition: background-color .15s, color .15s;
+  }
+  .cta:hover { background: var(--accent-soft); }
+  .card--featured .cta { background: var(--accent); color: var(--accent-contrast); }
+  .card--featured .cta:hover { background: color-mix(in srgb, var(--accent) 88%, var(--text)); }
+
+  footer { text-align: center; color: var(--muted); font-size: .875rem; margin-top: 32px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; }
+  }
+  @media (forced-colors: active) {
+    .switch::after { background: CanvasText; }
+    .switch[aria-checked="true"]::after { background: Highlight; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#plans">Skip to plans</a>
+<main>
+  <header>
+    <h1>Simple, transparent pricing</h1>
+    <p class="lede">Pick the plan that fits. Switch to yearly billing and save 20%.</p>
+  </header>
+
+  <div class="billing">
+    <span class="billing-label" id="label-monthly" data-active="true">Monthly</span>
+    <button type="button" class="switch" id="billing-switch"
+            role="switch" aria-checked="false"
+            aria-labelledby="billing-switch-label"></button>
+    <span class="visually-hidden" id="billing-switch-label">Bill yearly (save 20%)</span>
+    <span class="billing-label" id="label-yearly" data-active="false">Yearly</span>
+    <span class="save-badge" aria-hidden="true">Save 20%</span>
+  </div>
+
+  <p class="visually-hidden" id="billing-status" role="status" aria-live="polite"></p>
+
+  <ul class="plans" id="plans" tabindex="-1" aria-label="Pricing plans">
+    <li class="card" data-monthly="12">
+      <h2 id="plan-basic">Basic</h2>
+      <p class="tagline">For individuals getting started.</p>
+      <p class="price"><span class="amount">$12</span><span class="period">/mo</span></p>
+      <p class="billed-note">Billed monthly</p>
+      <ul class="features" aria-label="Basic features">
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>1 project</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>5 GB storage</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Community support</li>
+      </ul>
+      <button type="button" class="cta" aria-describedby="plan-basic">Choose Basic</button>
+    </li>
+
+    <li class="card card--featured" data-monthly="29">
+      <span class="ribbon">Most popular</span>
+      <h2 id="plan-pro">Pro <span class="visually-hidden">(most popular)</span></h2>
+      <p class="tagline">For professionals who ship often.</p>
+      <p class="price"><span class="amount">$29</span><span class="period">/mo</span></p>
+      <p class="billed-note">Billed monthly</p>
+      <ul class="features" aria-label="Pro features">
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited projects</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>100 GB storage</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority email support</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Advanced analytics</li>
+      </ul>
+      <button type="button" class="cta" aria-describedby="plan-pro">Choose Pro</button>
+    </li>
+
+    <li class="card" data-monthly="79">
+      <h2 id="plan-team">Team</h2>
+      <p class="tagline">For teams that collaborate at scale.</p>
+      <p class="price"><span class="amount">$79</span><span class="period">/mo</span></p>
+      <p class="billed-note">Billed monthly</p>
+      <ul class="features" aria-label="Team features">
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Pro</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Up to 10 seats</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>1 TB shared storage</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>SSO and audit logs</li>
+      </ul>
+      <button type="button" class="cta" aria-describedby="plan-team">Choose Team</button>
+    </li>
+  </ul>
+
+  <footer>Prices in USD. Cancel anytime.</footer>
+</main>
+
+<script>
+(() => {
+  'use strict';
+
+  const YEARLY_DISCOUNT = 0.2;
+  const MONTHS_PER_YEAR = 12;
+
+  const currency = new Intl.NumberFormat('en-US', {
+    style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 2
+  });
+
+  const toggle = document.getElementById('billing-switch');
+  const labelMonthly = document.getElementById('label-monthly');
+  const labelYearly = document.getElementById('label-yearly');
+  const status = document.getElementById('billing-status');
+  const cards = Array.from(document.querySelectorAll('.card[data-monthly]'));
+
+  // Pure pricing function: returns a new object, never mutates input.
+  const priceFor = (monthlyBase, isYearly) => {
+    if (!isYearly) {
+      return { perMonth: monthlyBase, note: 'Billed monthly' };
+    }
+    const perMonth = Math.round(monthlyBase * (1 - YEARLY_DISCOUNT) * 100) / 100;
+    const perYear = Math.round(perMonth * MONTHS_PER_YEAR * 100) / 100;
+    return { perMonth, note: `${currency.format(perYear)} billed yearly` };
+  };
+
+  const render = (isYearly, announce) => {
+    toggle.setAttribute('aria-checked', String(isYearly));
+    labelMonthly.dataset.active = String(!isYearly);
+    labelYearly.dataset.active = String(isYearly);
+
+    cards.forEach((card) => {
+      const base = Number(card.dataset.monthly);
+      if (!Number.isFinite(base)) return;
+      const { perMonth, note } = priceFor(base, isYearly);
+      card.querySelector('.amount').textContent = currency.format(perMonth);
+      card.querySelector('.billed-note').textContent = note;
+    });
+
+    if (announce) {
+      status.textContent = isYearly
+        ? 'Yearly billing selected. Prices reduced by 20 percent.'
+        : 'Monthly billing selected.';
+    }
+  };
+
+  const isYearly = () => toggle.getAttribute('aria-checked') === 'true';
+
+  // Native <button> handles Enter and Space activation for keyboard users.
+  toggle.addEventListener('click', () => render(!isYearly(), true));
+
+  // Clicking the visible text labels selects that billing period directly.
+  labelMonthly.addEventListener('click', () => { if (isYearly()) render(false, true); });
+  labelYearly.addEventListener('click', () => { if (!isYearly()) render(true, true); });
+
+  render(false, false);
+})();
+</script>
+</body>
+</html>

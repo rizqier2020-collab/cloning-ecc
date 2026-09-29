@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MTs Contoh Al-Hikmah</title>
+<meta name="description" content="Website resmi MTs Contoh Al-Hikmah, Madrasah Tsanawiyah terakreditasi A di Kota Contoh. Informasi profil, akademik, berita, agenda, dan PPDB 2027/2028.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
+<style>
+/* ===== Token (lihat panduan-desain.md) ===== */
+:root {
+  --primary-50: #EEF6F1;
+  --primary-100: #D5E9DD;
+  --primary-600: #0F6B45;
+  --primary-700: #0B5236;
+  --primary-800: #0A4430;
+  --primary-900: #07301F;
+  --accent-100: #FBF1DC;
+  --accent-200: #F6E3B4;
+  --accent-300: #E8C170;
+  --accent-500: #D9A441;
+  --accent-600: #C28A26;
+  --accent-700: #8A5A12;
+  --ink: #1B2420;
+  --muted: #4F5B55;
+  --line: #E4E0D6;
+  --canvas: #FAF8F3;
+  --surface: #FFFFFF;
+  --sand: #F3EFE5;
+  --danger-50: #FDECEA;
+  --danger-600: #B42318;
+  --footer-text: #C8D6CE;
+
+  --font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --r-sm: 6px; --r-md: 10px; --r-lg: 16px; --r-xl: 24px;
+  --r-arch: 999px 999px 16px 16px;
+
+  --sh-sm: 0 1px 2px rgb(27 36 32 / .06);
+  --sh-md: 0 6px 16px -4px rgb(27 36 32 / .12);
+  --sh-lg: 0 18px 40px -12px rgb(7 48 31 / .28);
+
+  --gutter: 16px;
+  --section-y: 64px;
+  --header-h: 64px;
+
+  /* Motif bintang delapan (khatam) */
+  --pattern-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.09' stroke-width='1.2'%3E%3Crect x='16' y='16' width='24' height='24'/%3E%3Crect x='16' y='16' width='24' height='24' transform='rotate(45 28 28)'/%3E%3Ccircle cx='28' cy='28' r='5'/%3E%3Cpath d='M0 0l8 8M56 0l-8 8M0 56l8-8M56 56l-8-8'/%3E%3C/g%3E%3C/svg%3E");
+  --pattern-gold: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='%238A5A12' stroke-opacity='.12' stroke-width='1.2'%3E%3Crect x='16' y='16' width='24' height='24'/%3E%3Crect x='16' y='16' width='24' height='24' transform='rotate(45 28 28)'/%3E%3Ccircle cx='28' cy='28' r='5'/%3E%3Cpath d='M0 0l8 8M56 0l-8 8M0 56l8-8M56 56l-8-8'/%3E%3C/g%3E%3C/svg%3E");
+}
+@media (min-width: 640px) { :root { --gutter: 24px; } }
+@media (min-width: 1080px) { :root { --gutter: 32px; --section-y: 96px; --header-h: 76px; } }
+
+/* ===== Dasar ===== */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--header-h) + 16px); }
+body {
+  margin: 0; font-family: var(--font); font-size: 16px; line-height: 1.65;
+  color: var(--ink); background: var(--canvas); overflow-wrap: break-word;
+}
+h1, h2, h3, h4, p, ul, ol, dl, dd, blockquote, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: var(--primary-600); }
+img, svg { display: block; max-width: 100%; }
+:focus-visible { outline: 3px solid var(--accent-500); outline-offset: 2px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; } }
+
+.container { width: 100%; max-width: calc(1200px + 2 * var(--gutter)); margin-inline: auto; padding-inline: var(--gutter); }
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.skip-link {
+  position: absolute; left: 16px; top: -100px; z-index: 100;
+  background: var(--primary-700); color: #fff; padding: 12px 16px; border-radius: var(--r-md); font-weight: 700;
+}
+.skip-link:focus { top: 12px; }
+
+/* ===== Tombol ===== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 44px; padding: 10px 20px; border-radius: var(--r-md);
+  font: 600 16px/1.2 var(--font); text-decoration: none; cursor: pointer; white-space: nowrap;
+  border: 1.5px solid transparent; transition: background-color .15s ease, border-color .15s ease, transform .15s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn--lg { min-height: 48px; padding: 12px 24px; }
+.btn--primary { background: var(--primary-600); color: #fff; }
+.btn--primary:hover { background: var(--primary-700); }
+.btn--ppdb { background: var(--accent-500); color: var(--ink); font-weight: 700; }
+.btn--ppdb:hover { background: var(--accent-600); }
+.btn--ghost-light { border-color: rgb(255 255 255 / .7); color: #fff; }
+.btn--ghost-light:hover { background: rgb(255 255 255 / .1); border-color: #fff; }
+.btn--outline { border-color: var(--primary-600); color: var(--primary-600); background: transparent; }
+.btn--outline:hover { background: var(--primary-50); }
+.btn svg { width: 18px; height: 18px; flex: none; }
+
+.link-arrow {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 44px;
+  font-weight: 700; text-decoration: none; color: var(--primary-600);
+}
+.link-arrow:hover { text-decoration: underline; text-underline-offset: 3px; }
+.link-arrow svg { width: 16px; height: 16px; }
+
+/* ===== Header ===== */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgb(255 255 255 / .96); border-bottom: 1px solid var(--line);
+  backdrop-filter: saturate(1.2) blur(6px);
+}
+.header-inner { display: flex; align-items: center; gap: 12px; min-height: var(--header-h); }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); margin-right: auto; min-height: 44px; }
+.brand svg { width: 40px; height: 40px; flex: none; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+.brand-name { font-weight: 800; font-size: 15px; letter-spacing: -.01em; }
+.brand-sub { font-size: 12px; color: var(--muted); font-weight: 600; }
+@media (max-width: 419px) {
+  .header-inner { gap: 8px; }
+  .brand { gap: 8px; }
+  .brand-sub { display: none; }
+  .brand-name { max-width: 7.5em; font-size: 14px; }
+}
+@media (min-width: 420px) { .brand-name { font-size: 16px; } }
+
+.header-ppdb { padding: 8px 12px; font-size: 14px; min-height: 44px; flex: none; }
+.menu-toggle {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 44px; min-width: 44px; padding: 0 12px;
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--r-md);
+  font: 600 14px var(--font); color: var(--ink); cursor: pointer;
+}
+.menu-toggle svg { width: 20px; height: 20px; }
+.menu-toggle .icon-close { display: none; }
+.menu-toggle[aria-expanded="true"] .icon-open { display: none; }
+.menu-toggle[aria-expanded="true"] .icon-close { display: block; }
+@media (max-width: 419px) { .menu-toggle { padding: 0; justify-content: center; } .menu-toggle-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } }
+
+/* Menu HP */
+.main-nav { display: none; }
+.main-nav.is-open {
+  display: block; position: absolute; left: 0; right: 0; top: 100%;
+  max-height: calc(100vh - var(--header-h)); max-height: calc(100dvh - var(--header-h)); overflow-y: auto;
+  background: var(--surface); border-bottom: 1px solid var(--line); box-shadow: var(--sh-lg);
+  padding: 8px var(--gutter) 24px;
+}
+.nav-list > li { border-bottom: 1px solid var(--line); }
+.nav-list > li:last-child { border-bottom: 0; }
+.nav-link {
+  display: flex; align-items: center; justify-content: space-between; min-height: 48px;
+  font-weight: 700; color: var(--ink); text-decoration: none;
+}
+.nav-link .chev { display: none; }
+.nav-link[aria-current="page"] { color: var(--primary-600); }
+.submenu { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; padding: 0 0 10px 12px; }
+.submenu a {
+  display: flex; align-items: center; min-height: 44px; font-size: 15px; color: var(--muted);
+  text-decoration: none; font-weight: 600;
+}
+.submenu a:hover, .nav-link:hover { color: var(--primary-600); }
+
+@media (min-width: 1080px) {
+  .menu-toggle { display: none; }
+  .main-nav, .main-nav.is-open {
+    display: block; position: static; box-shadow: none; border: 0; padding: 0; max-height: none; overflow: visible; background: none;
+  }
+  .nav-list { display: flex; align-items: center; gap: 4px; }
+  .nav-list > li { position: relative; border: 0; }
+  .nav-link { gap: 4px; padding: 0 12px; min-height: 44px; font-weight: 600; font-size: 15px; border-radius: var(--r-md); }
+  .nav-link .chev { display: block; width: 14px; height: 14px; transition: transform .15s ease; }
+  .nav-link:hover { background: var(--primary-50); }
+  .nav-link[aria-current="page"] { box-shadow: inset 0 -2px 0 var(--accent-500); border-radius: 0; }
+  .nav-home { display: none; }
+  .submenu {
+    position: absolute; left: 0; top: 100%; min-width: 230px; grid-template-columns: 1fr; padding: 8px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--sh-md);
+    display: none;
+  }
+  .has-sub:hover .submenu, .has-sub:focus-within .submenu { display: grid; }
+  .has-sub:hover .chev, .has-sub:focus-within .chev { transform: rotate(180deg); }
+  .submenu a { padding: 0 12px; border-radius: var(--r-sm); color: var(--ink); }
+  .submenu a:hover { background: var(--primary-50); color: var(--primary-700); }
+  .header-ppdb { margin-left: 12px; padding: 10px 18px; font-size: 15px; }
+}
+
+/* ===== Seksi umum ===== */
+.section { padding-block: var(--section-y); }
+.section--sand { background: var(--sand); }
+.section-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 8px 24px; margin-bottom: 28px; }
+@media (min-width: 1080px) { .section-head { margin-bottom: 40px; } }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px; margin-bottom: 8px;
+  font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--accent-700);
+}
+.eyebrow::before { content: ""; width: 18px; height: 2px; background: currentColor; border-radius: 2px; }
+.h2 { font-size: 24px; line-height: 1.2; font-weight: 700; letter-spacing: -.015em; color: var(--ink); }
+.h3 { font-size: 18px; line-height: 1.35; font-weight: 700; }
+@media (min-width: 1080px) { .h2 { font-size: 32px; } .h3 { font-size: 20px; } }
+.meta { font-size: 14px; color: var(--muted); }
+
+/* Placeholder foto */
+.ph {
+  position: relative; display: grid; place-items: end start; overflow: hidden;
+  background: var(--pattern-light), linear-gradient(135deg, #2E7D5B 0%, #0F6B45 45%, #0A4430 100%);
+  color: #fff;
+}
+.ph--gold { background: var(--pattern-gold), linear-gradient(135deg, #F6E3B4, #E8C170); color: var(--ink); }
+.ph--sage { background: var(--pattern-light), linear-gradient(135deg, #6E9C83, #3F7A5C); }
+.ph--dusk { background: var(--pattern-light), linear-gradient(135deg, #0F6B45, #3D5A4A 60%, #8A5A12); }
+.ph-label {
+  margin: 12px; padding: 4px 10px; border-radius: var(--r-full, 999px);
+  font-size: 12px; font-weight: 700; letter-spacing: .02em;
+  background: rgb(7 48 31 / .72); color: #fff;
+}
+.ph--gold .ph-label { background: rgb(255 255 255 / .85); color: var(--ink); }
+
+/* ===== Hero ===== */
+.hero {
+  position: relative; color: #fff; overflow: hidden;
+  background: var(--pattern-light), linear-gradient(140deg, var(--primary-700) 0%, var(--primary-600) 100%);
+  padding-block: 48px 72px;
+}
+.hero::after { /* lengkung lembut bawah */
+  content: ""; position: absolute; inset: auto 0 0 0; height: 40px;
+  background: radial-gradient(120% 100% at 50% 100%, rgb(0 0 0 / .12), transparent 70%);
+}
+.hero-grid { position: relative; z-index: 1; display: grid; gap: 40px; align-items: center; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; margin-bottom: 18px;
+  border: 1px solid rgb(232 193 112 / .5); border-radius: 999px;
+  color: var(--accent-300); font-size: 13px; font-weight: 700; letter-spacing: .04em;
+}
+.hero-eyebrow svg { width: 16px; height: 16px; }
+.hero h1 { font-size: 32px; line-height: 1.1; font-weight: 800; letter-spacing: -.025em; }
+.hero h1 .accent { color: var(--accent-300); }
+.hero-tagline { margin-top: 16px; font-size: 17px; line-height: 1.6; color: #D4E4DA; max-width: 34em; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.hero-cta .btn { flex: 1 1 200px; }
+.hero-media { display: none; }
+@media (min-width: 640px) { .hero { padding-block: 64px 120px; } .hero-cta .btn { flex: 0 0 auto; } }
+@media (min-width: 1080px) {
+  .hero { padding-block: 80px 140px; }
+  .hero-grid { grid-template-columns: 1.15fr .85fr; gap: 56px; }
+  .hero h1 { font-size: 52px; }
+  .hero-tagline { font-size: 19px; }
+  .hero-media { display: block; position: relative; justify-self: end; width: 100%; max-width: 420px; }
+  .hero-arch { place-items: end end; aspect-ratio: 4 / 5; border-radius: var(--r-arch); border: 6px solid rgb(255 255 255 / .12); box-shadow: var(--sh-lg); }
+  .hero-arch.ph { background: var(--pattern-gold), linear-gradient(160deg, #F6E3B4 0%, #E8C170 55%, #C28A26 100%); color: var(--ink); }
+  .hero-badge {
+    position: absolute; left: -28px; bottom: 40px; display: flex; align-items: center; gap: 12px;
+    padding: 14px 18px; background: var(--surface); color: var(--ink); border-radius: var(--r-lg); box-shadow: var(--sh-lg);
+  }
+  .hero-badge strong { display: block; font-size: 15px; }
+  .hero-badge span { font-size: 13px; color: var(--muted); }
+  .hero-badge .dot { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--primary-50); color: var(--primary-600); }
+  .hero-badge .dot svg { width: 22px; height: 22px; }
+}
+
+/* ===== Statistik ===== */
+.stats-wrap { position: relative; z-index: 2; margin-top: -40px; }
+.stats {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--sh-md);
+}
+.stat { padding: 18px 16px; text-align: center; }
+.stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--line); }
+.stat:nth-child(odd) { border-right: 1px solid var(--line); }
+.stat dd { font-size: 28px; line-height: 1.1; font-weight: 800; color: var(--primary-600); letter-spacing: -.02em; }
+.stat dd .unit { font-size: .6em; font-weight: 700; margin-left: 2px; }
+.stat dt { margin-top: 4px; font-size: 14px; color: var(--muted); font-weight: 600; }
+.stat-a { display: inline-grid; place-items: center; width: 1.3em; height: 1.3em; border-radius: 50%; background: var(--accent-100); color: var(--accent-700); }
+@media (min-width: 640px) {
+  .stats-wrap { margin-top: -64px; }
+  .stats { grid-template-columns: repeat(4, 1fr); }
+  .stat { padding: 24px 16px; border-bottom: 0 !important; border-right: 1px solid var(--line); }
+  .stat:last-child { border-right: 0; }
+  .stat dd { font-size: 32px; }
+}
+/* dt tampil di bawah dd secara visual, urutan DOM dt→dd tetap benar */
+.stat { display: flex; flex-direction: column-reverse; }
+
+/* ===== Sambutan ===== */
+.sambutan { display: grid; gap: 28px; align-items: center; }
+.sambutan-photo { width: 100%; max-width: 220px; margin-inline: auto; }
+.sambutan-photo .ph { aspect-ratio: 4 / 5; border-radius: var(--r-arch); }
+.sambutan-photo figcaption { margin-top: 14px; text-align: center; }
+.sambutan-photo figcaption strong { display: block; font-size: 16px; }
+.sambutan blockquote { position: relative; font-size: 17px; line-height: 1.7; color: var(--ink); }
+.sambutan blockquote p + p { margin-top: 12px; }
+.salam { font-weight: 700; color: var(--primary-800); }
+.quote-mark { width: 40px; height: 40px; color: var(--accent-500); margin-bottom: 12px; }
+@media (min-width: 768px) {
+  .sambutan { grid-template-columns: 5fr 7fr; gap: 56px; }
+  .sambutan-photo { max-width: 340px; }
+}
+@media (min-width: 1080px) { .sambutan blockquote { font-size: 19px; } }
+
+/* ===== Pengumuman ===== */
+.info-grid { display: grid; gap: 48px; }
+@media (min-width: 1080px) { .info-grid { grid-template-columns: 5fr 7fr; gap: 56px; } }
+.pengumuman-list { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; }
+.pengumuman-item + .pengumuman-item { border-top: 1px solid var(--line); }
+.pengumuman-link {
+  display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: start;
+  padding: 16px; text-decoration: none; color: inherit; min-height: 44px;
+}
+.pengumuman-link:hover { background: var(--primary-50); }
+.pengumuman-link:hover .pengumuman-title { color: var(--primary-600); text-decoration: underline; text-underline-offset: 3px; }
+.date-block {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  width: 56px; height: 60px; border-radius: var(--r-md); background: var(--primary-50); color: var(--primary-800);
+}
+.date-block .d { font-size: 22px; font-weight: 800; line-height: 1; }
+.date-block .m { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-top: 3px; }
+.pengumuman-title { font-size: 16px; font-weight: 700; line-height: 1.4; color: var(--ink); }
+.pengumuman-desc { margin-top: 4px; font-size: 14px; color: var(--muted); line-height: 1.5; }
+.badge {
+  display: inline-flex; align-items: center; height: 24px; padding: 0 8px; margin-bottom: 6px;
+  border-radius: var(--r-sm); font-size: 12px; font-weight: 700; letter-spacing: .02em;
+}
+.badge--danger { background: var(--danger-50); color: var(--danger-600); }
+.badge--gold { background: var(--accent-100); color: var(--accent-700); }
+.badge--green { background: var(--primary-50); color: var(--primary-800); }
+
+/* ===== Berita ===== */
+.berita-grid { display: grid; gap: 20px; }
+@media (min-width: 640px) { .berita-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1080px) { .berita-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+.card {
+  position: relative; display: flex; flex-direction: column;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden;
+  box-shadow: var(--sh-sm); transition: box-shadow .2s ease, transform .2s ease;
+}
+.card:hover { box-shadow: var(--sh-md); transform: translateY(-2px); }
+.card:focus-within { box-shadow: 0 0 0 3px var(--accent-500); }
+.card .ph { aspect-ratio: 16 / 9; }
+.card-body { display: flex; flex-direction: column; gap: 8px; padding: 18px 20px 20px; flex: 1; }
+.card-kat { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--accent-700); }
+.card-title a { color: var(--ink); text-decoration: none; }
+.card-title a::after { content: ""; position: absolute; inset: 0; } /* stretched link */
+.card-title a:focus-visible { outline: none; }
+.card:hover .card-title a { color: var(--primary-600); }
+.card-excerpt { font-size: 15px; color: var(--muted); line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.card-meta { margin-top: auto; padding-top: 6px; font-size: 14px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.card-meta svg { width: 16px; height: 16px; }
+/* Berita pada kolom kanan info-grid: di desktop tampil 1 kolom unggulan + 2 */
+.info-grid .berita-grid { grid-template-columns: 1fr; }
+@media (min-width: 640px) { .info-grid .berita-grid { grid-template-columns: repeat(2, 1fr); } .info-grid .berita-grid .card--feature { grid-column: 1 / -1; } }
+@media (min-width: 640px) {
+  .card--feature { flex-direction: row; }
+  .card--feature .ph { aspect-ratio: auto; flex: 0 0 46%; min-height: 220px; }
+}
+
+/* ===== Program unggulan ===== */
+.program-grid { display: grid; gap: 20px; }
+@media (min-width: 640px) { .program-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1080px) { .program-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+.program-card { padding: 28px 24px 20px; }
+.program-card .card-body { padding: 0; }
+.program-icon {
+  width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 8px;
+  background: var(--primary-50); color: var(--primary-600); box-shadow: inset 0 0 0 1px var(--primary-100);
+}
+.program-icon svg { width: 28px; height: 28px; }
+.program-card p { color: var(--muted); font-size: 15px; }
+.program-card .card-title a::after { border-radius: var(--r-lg); }
+.program-more { margin-top: auto; padding-top: 8px; font-weight: 700; font-size: 15px; color: var(--primary-600); display: inline-flex; gap: 6px; align-items: center; }
+.program-more svg { width: 16px; height: 16px; }
+.program-card:nth-child(2) .program-icon { background: var(--accent-100); color: var(--accent-700); box-shadow: inset 0 0 0 1px var(--accent-200); }
+
+/* ===== Agenda ===== */
+.agenda-list { display: grid; gap: 14px; }
+@media (min-width: 1080px) { .agenda-list { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+.agenda-item {
+  position: relative; display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: start;
+  padding: 18px 18px 18px 20px; background: var(--surface); border: 1px solid var(--line);
+  border-left: 4px solid var(--accent-500); border-radius: var(--r-lg);
+}
+.agenda-date { text-align: center; min-width: 56px; }
+.agenda-date .day { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.agenda-date .d { font-size: 28px; font-weight: 800; line-height: 1.05; color: var(--primary-600); }
+.agenda-date .m { font-size: 13px; font-weight: 700; color: var(--ink); }
+.agenda-title { font-size: 16px; font-weight: 700; line-height: 1.4; }
+.agenda-meta { margin-top: 8px; display: grid; gap: 4px; font-size: 14px; color: var(--muted); }
+.agenda-meta span { display: flex; align-items: center; gap: 6px; }
+.agenda-meta svg { width: 16px; height: 16px; flex: none; color: var(--primary-600); }
+
+/* ===== PPDB banner ===== */
+.ppdb {
+  position: relative; overflow: hidden; display: grid; gap: 28px;
+  padding: 32px 20px; border-radius: var(--r-xl);
+  background: var(--pattern-gold), var(--accent-200); color: var(--ink);
+  border: 1px solid #EBD294;
+}
+.ppdb-status { margin-bottom: 12px; }
+.ppdb h2 { font-size: 26px; line-height: 1.15; font-weight: 800; letter-spacing: -.02em; }
+.ppdb-lead { margin-top: 12px; font-size: 16px; max-width: 34em; }
+.ppdb-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.ppdb-actions .btn { flex: 1 1 200px; }
+.ppdb-actions .btn--outline { background: rgb(255 255 255 / .55); }
+.jadwal { background: var(--surface); border-radius: var(--r-lg); padding: 8px 20px; box-shadow: var(--sh-sm); }
+.jadwal-title { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--accent-700); padding: 12px 0 4px; }
+.jadwal li { display: grid; grid-template-columns: 28px 1fr; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
+.jadwal li:first-child { border-top: 0; }
+.jadwal .step {
+  width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--primary-600); color: #fff; font-size: 13px; font-weight: 800;
+}
+.jadwal strong { display: block; font-size: 15px; }
+.jadwal time { font-size: 14px; color: var(--muted); }
+@media (min-width: 640px) { .ppdb { padding: 40px; } .ppdb-actions .btn { flex: 0 0 auto; } }
+@media (min-width: 1080px) { .ppdb { grid-template-columns: 1.1fr .9fr; align-items: center; gap: 48px; padding: 56px; } .ppdb h2 { font-size: 36px; } }
+
+/* ===== Galeri ===== */
+.galeri-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+@media (min-width: 640px) { .galeri-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
+.galeri-grid figure { margin: 0; }
+.galeri-grid a { display: block; text-decoration: none; color: var(--ink); border-radius: var(--r-lg); }
+.galeri-grid .ph { aspect-ratio: 4 / 3; border-radius: var(--r-lg); transition: transform .2s ease; }
+.galeri-grid a:hover .ph { transform: scale(1.02); }
+.galeri-grid figcaption { margin-top: 8px; font-size: 14px; font-weight: 600; line-height: 1.4; }
+
+/* ===== Kontak ===== */
+.kontak { display: grid; gap: 24px; }
+@media (min-width: 1080px) { .kontak { grid-template-columns: 5fr 7fr; gap: 40px; align-items: stretch; } }
+.kontak-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 24px; }
+.kontak-list { display: grid; gap: 18px; margin-top: 8px; }
+.kontak-list li { display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: start; }
+.kontak-ico { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--primary-50); color: var(--primary-600); }
+.kontak-ico svg { width: 20px; height: 20px; }
+.kontak-list .lbl { font-size: 13px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.kontak-list .val { font-weight: 600; }
+.kontak-list a.val { color: var(--ink); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; display: inline-flex; min-height: 44px; align-items: center; }
+.kontak-list a.val:hover { color: var(--primary-600); text-decoration-color: currentColor; }
+.kontak-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.kontak-actions .btn { flex: 1 1 180px; }
+.map {
+  position: relative; min-height: 280px; border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--line);
+  background: #E9EFE9;
+}
+.map svg.map-art { position: absolute; inset: 0; width: 100%; height: 100%; }
+.map-cta {
+  position: absolute; left: 16px; right: 16px; bottom: 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 14px 16px; background: var(--surface); border-radius: var(--r-md); box-shadow: var(--sh-md);
+}
+.map-cta p { font-size: 14px; color: var(--muted); }
+.map-cta strong { display: block; color: var(--ink); font-size: 15px; }
+
+/* ===== Footer ===== */
+.site-footer {
+  background: var(--pattern-light), var(--primary-900); color: var(--footer-text);
+  padding-top: 56px; font-size: 15px;
+}
+.footer-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
+.footer-grid > div { grid-column: 1 / -1; }
+@media (min-width: 1080px) { .footer-grid { grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 40px; } .footer-grid > div { grid-column: auto; } }
+.site-footer h2 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 12px; letter-spacing: .02em; }
+.site-footer a { color: var(--footer-text); text-decoration: none; }
+.site-footer a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.footer-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; color: #fff; }
+.footer-brand svg { width: 48px; height: 48px; }
+.footer-brand strong { display: block; font-size: 17px; }
+.footer-brand span { font-size: 13px; color: var(--footer-text); }
+.footer-id { margin-top: 14px; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 14px; }
+.footer-id dt { color: var(--accent-300); font-weight: 700; }
+.footer-links a { display: inline-flex; align-items: center; min-height: 44px; }
+.footer-links li { line-height: 1.2; }
+.footer-tel { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; }
+.sosmed { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.sosmed a {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px 0 10px;
+  border: 1px solid rgb(200 214 206 / .3); border-radius: 999px; font-size: 14px; font-weight: 600;
+}
+.sosmed a:hover { background: rgb(255 255 255 / .08); text-decoration: none; }
+.sosmed svg { width: 18px; height: 18px; }
+.footer-bottom {
+  margin-top: 48px; padding-block: 20px; border-top: 1px solid rgb(200 214 206 / .2);
+  display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; font-size: 14px;
+}
+.footer-bottom a { display: inline-flex; min-height: 44px; align-items: center; }
+.footer-bottom p { display: flex; align-items: center; min-height: 44px; }
+</style>
+</head>
+<body>
+
+<!-- Ikon SVG dipakai ulang lewat <use>; semua dekoratif -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19.3z"/><path d="M9 10h.01M12 10h.01M15 10h.01"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5C10 5 7 4.5 4 5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5V5c-3-.5-6 0-8 1.5z"/><path d="M12 6.5v13"/></symbol>
+    <symbol id="i-lang" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h9v7H8l-4 3z"/><path d="M11 12v2h5l4 3v-9h-7"/></symbol>
+    <symbol id="i-flask" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3"/><path d="M7 15h10"/></symbol>
+    <symbol id="i-star8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12"/><rect x="6" y="6" width="12" height="12" transform="rotate(45 12 12)"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></symbol>
+    <symbol id="i-yt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="m10 9 5 3-5 3z" fill="currentColor"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h-2a4 4 0 0 0-4 4v3H7v4h2v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h2z"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
+    <!-- Lambang placeholder madrasah -->
+    <symbol id="logo" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="23" fill="#0F6B45"/>
+      <circle cx="24" cy="24" r="19.5" fill="none" stroke="#E8C170" stroke-width="1.5"/>
+      <g fill="none" stroke="#E8C170" stroke-width="1.6" stroke-linejoin="round">
+        <rect x="15" y="15" width="18" height="18"/>
+        <rect x="15" y="15" width="18" height="18" transform="rotate(45 24 24)"/>
+      </g>
+      <path d="M24 17.5c-1.6 1.4-2.6 3.2-2.6 5.3 0 3 2.4 5.2 5.3 5.2-.9.9-2.1 1.5-3.5 1.5a5.9 5.9 0 0 1 0-11.8z" fill="#fff"/>
+    </symbol>
+  </defs>
+</svg>
+
+<a class="skip-link" href="#konten">Langsung ke konten utama</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="MTs Contoh Al-Hikmah, ke beranda">
+      <svg aria-hidden="true" focusable="false"><use href="#logo"/></svg>
+      <span class="brand-text" aria-hidden="true">
+        <span class="brand-name">MTs Contoh Al-Hikmah</span>
+        <span class="brand-sub">Madrasah Tsanawiyah</span>
+      </span>
+    </a>
+
+    <nav id="menu-utama" class="main-nav" aria-label="Menu utama">
+      <ul class="nav-list">
+        <li class="nav-home"><a class="nav-link" href="/" aria-current="page">Beranda</a></li>
+        <li class="has-sub">
+          <a class="nav-link" href="/profil">Profil <svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></a>
+          <ul class="submenu" aria-label="Profil">
+            <li><a href="/profil/sejarah">Sejarah</a></li>
+            <li><a href="/profil/visi-misi">Visi &amp; Misi</a></li>
+            <li><a href="/profil/struktur-organisasi">Struktur Organisasi</a></li>
+            <li><a href="/profil/akreditasi">Akreditasi</a></li>
+            <li><a href="/guru-staf">Guru &amp; Staf</a></li>
+          </ul>
+        </li>
+        <li class="has-sub">
+          <a class="nav-link" href="/akademik">Akademik <svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></a>
+          <ul class="submenu" aria-label="Akademik">
+            <li><a href="/akademik/kurikulum">Kurikulum</a></li>
+            <li><a href="/akademik/mata-pelajaran">Mata Pelajaran</a></li>
+            <li><a href="/akademik/program-unggulan">Program Unggulan</a></li>
+          </ul>
+        </li>
+        <li class="has-sub">
+          <a class="nav-link" href="/kesiswaan">Kesiswaan <svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></a>
+          <ul class="submenu" aria-label="Kesiswaan">
+            <li><a href="/kesiswaan/ekstrakurikuler">Ekstrakurikuler</a></li>
+            <li><a href="/kesiswaan/osim">OSIM</a></li>
+            <li><a href="/kesiswaan/prestasi">Prestasi</a></li>
+          </ul>
+        </li>
+        <li class="has-sub">
+          <a class="nav-link" href="/berita">Informasi <svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></a>
+          <ul class="submenu" aria-label="Informasi">
+            <li><a href="/berita">Berita &amp; Pengumuman</a></li>
+            <li><a href="/agenda">Agenda</a></li>
+            <li><a href="/galeri">Galeri</a></li>
+            <li><a href="/unduhan">Unduhan</a></li>
+          </ul>
+        </li>
+        <li><a class="nav-link" href="/kontak">Kontak</a></li>
+      </ul>
+    </nav>
+
+    <a class="btn btn--ppdb header-ppdb" href="/ppdb">Daftar PPDB</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-utama">
+      <svg class="icon-open" aria-hidden="true"><use href="#i-menu"/></svg>
+      <svg class="icon-close" aria-hidden="true"><use href="#i-close"/></svg>
+      <span class="menu-toggle-label">Menu</span>
+    </button>
+  </div>
+</header>
+
+<main id="konten" tabindex="-1">
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" aria-labelledby="judul-hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="hero-eyebrow">
+          <svg aria-hidden="true"><use href="#i-star8"/></svg>
+          Terakreditasi A &middot; Kota Contoh
+        </p>
+        <h1 id="judul-hero">MTs Contoh <span class="accent">Al-Hikmah</span></h1>
+        <p class="hero-tagline">Madrasah yang menumbuhkan generasi berakhlak mulia, cinta Al-Qur'an, dan siap bersaing di ilmu pengetahuan.</p>
+        <div class="hero-cta">
+          <a class="btn btn--ppdb btn--lg" href="/ppdb">
+            Info PPDB 2027/2028
+            <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+          <a class="btn btn--ghost-light btn--lg" href="/profil">Profil Madrasah</a>
+        </div>
+      </div>
+      <div class="hero-media" aria-hidden="true">
+        <div class="ph hero-arch"><span class="ph-label">Foto kegiatan</span></div>
+        <div class="hero-badge">
+          <span class="dot"><svg><use href="#i-book"/></svg></span>
+          <span><strong>Tahfiz 3 Juz</strong><span>Target lulusan kelas 9</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Statistik ===== -->
+  <div class="container stats-wrap">
+    <h2 class="visually-hidden">Madrasah dalam angka</h2>
+    <dl class="stats">
+      <div class="stat"><dt>Siswa aktif</dt><dd>612</dd></div>
+      <div class="stat"><dt>Guru &amp; staf</dt><dd>48</dd></div>
+      <div class="stat"><dt>Ekstrakurikuler</dt><dd>14</dd></div>
+      <div class="stat"><dt>Akreditasi</dt><dd><span class="stat-a">A</span></dd></div>
+    </dl>
+  </div>
+
+  <!-- ===== Sambutan ===== -->
+  <section class="section" aria-labelledby="judul-sambutan">
+    <div class="container sambutan">
+      <figure class="sambutan-photo">
+        <div class="ph ph--sage" role="img" aria-label="Foto Kepala Madrasah (placeholder)"><span class="ph-label">Foto kepala madrasah</span></div>
+        <figcaption>
+          <strong>H. Ahmad Fulan, S.Pd.I., M.Pd.</strong>
+          <span class="meta">Kepala Madrasah</span>
+        </figcaption>
+      </figure>
+      <div>
+        <p class="eyebrow">Sambutan Kepala Madrasah</p>
+        <h2 id="judul-sambutan" class="h2" style="margin-bottom:20px">Belajar dengan hati, tumbuh bersama keluarga</h2>
+        <blockquote>
+          <svg class="quote-mark" viewBox="0 0 40 40" aria-hidden="true"><path fill="currentColor" d="M8 30V20c0-6 3-10 9-12l1.5 3C15 12.5 13.5 15 13.5 18H18v12zm16 0V20c0-6 3-10 9-12l1.5 3C31 12.5 29.5 15 29.5 18H34v12z"/></svg>
+          <p><span class="salam">Assalamu'alaikum warahmatullahi wabarakatuh.</span> Selamat datang di website MTs Contoh Al-Hikmah. Kami percaya setiap anak adalah amanah. Di sini, ilmu umum dan ilmu agama diajarkan beriringan, dalam suasana yang hangat dan disiplin.</p>
+          <p>Kami mengajak Bapak/Ibu untuk menjadi mitra dalam mendidik putra-putri kita.</p>
+        </blockquote>
+        <a class="link-arrow" href="/profil#sambutan" style="margin-top:12px">Baca sambutan lengkap <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Pengumuman + Berita ===== -->
+  <section class="section section--sand" aria-labelledby="judul-info">
+    <h2 id="judul-info" class="visually-hidden">Pengumuman dan berita terbaru</h2>
+    <div class="container info-grid">
+
+      <div>
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Pengumuman</p>
+            <h3 class="h2">Pengumuman terbaru</h3>
+          </div>
+        </div>
+        <ul class="pengumuman-list">
+          <li class="pengumuman-item">
+            <a class="pengumuman-link" href="/berita/jadwal-pts-ganjil-2026">
+              <time class="date-block" datetime="2026-09-28"><span class="d">28</span><span class="m">Sep</span></time>
+              <span>
+                <span class="badge badge--danger">Penting</span>
+                <span class="pengumuman-title" style="display:block">Jadwal Penilaian Tengah Semester (PTS) Ganjil 2026/2027</span>
+                <span class="pengumuman-desc" style="display:block">PTS dimulai 12 Oktober 2026. Siswa wajib hadir pukul 07.00 WIB.</span>
+              </span>
+            </a>
+          </li>
+          <li class="pengumuman-item">
+            <a class="pengumuman-link" href="/berita/rapat-komite-oktober">
+              <time class="date-block" datetime="2026-09-24"><span class="d">24</span><span class="m">Sep</span></time>
+              <span>
+                <span class="badge badge--gold">Orang Tua</span>
+                <span class="pengumuman-title" style="display:block">Undangan rapat komite dan wali murid kelas 7</span>
+                <span class="pengumuman-desc" style="display:block">Sabtu, 3 Oktober 2026 di aula madrasah.</span>
+              </span>
+            </a>
+          </li>
+          <li class="pengumuman-item">
+            <a class="pengumuman-link" href="/berita/libur-maulid-2026">
+              <time class="date-block" datetime="2026-09-18"><span class="d">18</span><span class="m">Sep</span></time>
+              <span>
+                <span class="badge badge--green">Akademik</span>
+                <span class="pengumuman-title" style="display:block">Perubahan jam belajar selama bulan Maulid</span>
+                <span class="pengumuman-desc" style="display:block">Kegiatan belajar selesai pukul 12.30 WIB mulai 21 September.</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+        <a class="link-arrow" href="/berita?jenis=pengumuman" style="margin-top:12px">Semua pengumuman <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+
+      <div>
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Berita</p>
+            <h3 class="h2">Kabar dari madrasah</h3>
+          </div>
+          <a class="link-arrow" href="/berita">Semua berita <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="berita-grid">
+          <article class="card card--feature">
+            <div class="ph ph--dusk" role="img" aria-label="Foto kegiatan: siswi menerima piala juara MTQ (placeholder)"><span class="ph-label">Foto kegiatan</span></div>
+            <div class="card-body">
+              <p class="card-kat">Prestasi</p>
+              <h4 class="h3 card-title"><a href="/berita/juara-mtq-kabupaten-2026">Siswi kelas 8 raih juara 1 MTQ tingkat kabupaten</a></h4>
+              <p class="card-excerpt">Ananda Fulanah membawa pulang piala cabang tilawah remaja putri setelah bersaing dengan 40 peserta dari seluruh kabupaten.</p>
+              <p class="card-meta"><svg aria-hidden="true"><use href="#i-cal"/></svg><time datetime="2026-09-20">20 September 2026</time></p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="ph" role="img" aria-label="Foto kegiatan: siswa praktik di laboratorium IPA (placeholder)"><span class="ph-label">Foto kegiatan</span></div>
+            <div class="card-body">
+              <p class="card-kat">Kegiatan</p>
+              <h4 class="h3 card-title"><a href="/berita/lab-ipa-baru">Laboratorium IPA baru mulai digunakan</a></h4>
+              <p class="card-meta"><svg aria-hidden="true"><use href="#i-cal"/></svg><time datetime="2026-09-14">14 September 2026</time></p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="ph ph--gold" role="img" aria-label="Foto kegiatan: upacara Hari Santri (placeholder)"><span class="ph-label">Foto kegiatan</span></div>
+            <div class="card-body">
+              <p class="card-kat">Kegiatan</p>
+              <h4 class="h3 card-title"><a href="/berita/persiapan-hari-santri">OSIM siapkan rangkaian Hari Santri 2026</a></h4>
+              <p class="card-meta"><svg aria-hidden="true"><use href="#i-cal"/></svg><time datetime="2026-09-09">9 September 2026</time></p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== Program unggulan ===== -->
+  <section class="section" aria-labelledby="judul-program">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Akademik</p>
+          <h2 id="judul-program" class="h2">Program unggulan</h2>
+        </div>
+        <a class="link-arrow" href="/akademik/program-unggulan">Lihat semua program <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="program-grid">
+        <article class="card program-card">
+          <div class="card-body">
+            <span class="program-icon" aria-hidden="true"><svg><use href="#i-book"/></svg></span>
+            <h3 class="h3 card-title"><a href="/akademik/program-unggulan#tahfiz">Tahfiz Al-Qur'an</a></h3>
+            <p>Setoran hafalan harian bersama pembimbing, target minimal 3 juz selama tiga tahun, dan wisuda tahfiz setiap akhir tahun.</p>
+            <span class="program-more" aria-hidden="true">Selengkapnya <svg><use href="#i-arrow"/></svg></span>
+          </div>
+        </article>
+        <article class="card program-card">
+          <div class="card-body">
+            <span class="program-icon" aria-hidden="true"><svg><use href="#i-lang"/></svg></span>
+            <h3 class="h3 card-title"><a href="/akademik/program-unggulan#bahasa">Bahasa Arab &amp; Inggris</a></h3>
+            <p>Kelas percakapan, pekan bahasa, dan lomba pidato dua bahasa agar siswa percaya diri berkomunikasi.</p>
+            <span class="program-more" aria-hidden="true">Selengkapnya <svg><use href="#i-arrow"/></svg></span>
+          </div>
+        </article>
+        <article class="card program-card">
+          <div class="card-body">
+            <span class="program-icon" aria-hidden="true"><svg><use href="#i-flask"/></svg></span>
+            <h3 class="h3 card-title"><a href="/akademik/program-unggulan#sains">Sains &amp; Teknologi</a></h3>
+            <p>Praktikum di laboratorium, klub robotik dan coding, serta pembinaan olimpiade sains (KSM).</p>
+            <span class="program-more" aria-hidden="true">Selengkapnya <svg><use href="#i-arrow"/></svg></span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Agenda ===== -->
+  <section class="section section--sand" aria-labelledby="judul-agenda">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Agenda</p>
+          <h2 id="judul-agenda" class="h2">Agenda terdekat</h2>
+        </div>
+        <a class="link-arrow" href="/agenda">Kalender lengkap <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+      <ul class="agenda-list">
+        <li class="agenda-item">
+          <time class="agenda-date" datetime="2026-10-03">
+            <span class="day" style="display:block">Sabtu</span><span class="d" style="display:block">3</span><span class="m" style="display:block">Okt 2026</span>
+          </time>
+          <div>
+            <h3 class="agenda-title">Rapat komite dan wali murid kelas 7</h3>
+            <p class="agenda-meta">
+              <span><svg aria-hidden="true"><use href="#i-clock"/></svg>08.00 – 11.00 WIB</span>
+              <span><svg aria-hidden="true"><use href="#i-pin"/></svg>Aula madrasah</span>
+            </p>
+          </div>
+        </li>
+        <li class="agenda-item">
+          <time class="agenda-date" datetime="2026-10-12">
+            <span class="day" style="display:block">Senin</span><span class="d" style="display:block">12–17</span><span class="m" style="display:block">Okt 2026</span>
+          </time>
+          <div>
+            <h3 class="agenda-title">Penilaian Tengah Semester Ganjil</h3>
+            <p class="agenda-meta">
+              <span><svg aria-hidden="true"><use href="#i-clock"/></svg>07.15 – 11.30 WIB</span>
+              <span><svg aria-hidden="true"><use href="#i-pin"/></svg>Ruang kelas 7–9</span>
+            </p>
+          </div>
+        </li>
+        <li class="agenda-item">
+          <time class="agenda-date" datetime="2026-10-22">
+            <span class="day" style="display:block">Kamis</span><span class="d" style="display:block">22</span><span class="m" style="display:block">Okt 2026</span>
+          </time>
+          <div>
+            <h3 class="agenda-title">Upacara dan lomba Hari Santri Nasional</h3>
+            <p class="agenda-meta">
+              <span><svg aria-hidden="true"><use href="#i-clock"/></svg>07.00 – 12.00 WIB</span>
+              <span><svg aria-hidden="true"><use href="#i-pin"/></svg>Lapangan madrasah</span>
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== PPDB ===== -->
+  <section class="section" aria-labelledby="judul-ppdb" id="ppdb">
+    <div class="container">
+      <div class="ppdb">
+        <div>
+          <p class="ppdb-status"><span class="badge badge--green" style="margin:0">Segera dibuka</span></p>
+          <h2 id="judul-ppdb">PPDB Tahun Ajaran 2027/2028</h2>
+          <p class="ppdb-lead">Pendaftaran peserta didik baru kelas 7 dilakukan secara online. Siapkan Kartu Keluarga, akta kelahiran, dan rapor SD/MI. Kuota terbatas.</p>
+          <div class="ppdb-actions">
+            <a class="btn btn--primary btn--lg" href="/ppdb/daftar">Daftar Sekarang <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn--outline btn--lg" href="/unduhan/brosur-ppdb-2027.pdf"><svg aria-hidden="true"><use href="#i-download"/></svg> Unduh brosur (PDF)</a>
+          </div>
+        </div>
+        <div class="jadwal">
+          <h3 class="jadwal-title">Jadwal penting</h3>
+          <ol>
+            <li><span class="step" aria-hidden="true">1</span><div><strong>Pendaftaran online</strong><time datetime="2027-01-11">11 Januari – 13 Maret 2027</time></div></li>
+            <li><span class="step" aria-hidden="true">2</span><div><strong>Tes baca Al-Qur'an &amp; wawancara</strong><time datetime="2027-03-20">20–21 Maret 2027</time></div></li>
+            <li><span class="step" aria-hidden="true">3</span><div><strong>Pengumuman hasil</strong><time datetime="2027-04-03">3 April 2027</time></div></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Galeri ===== -->
+  <section class="section section--sand" aria-labelledby="judul-galeri">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Galeri</p>
+          <h2 id="judul-galeri" class="h2">Suasana madrasah</h2>
+        </div>
+        <a class="link-arrow" href="/galeri">Buka galeri <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+      <ul class="galeri-grid">
+        <li><a href="/galeri/wisuda-tahfiz-2026"><figure><div class="ph" role="img" aria-label="Foto kegiatan: wisuda tahfiz (placeholder)"><span class="ph-label">Foto kegiatan</span></div><figcaption>Wisuda Tahfiz 2026</figcaption></figure></a></li>
+        <li><a href="/galeri/pramuka"><figure><div class="ph ph--gold" role="img" aria-label="Foto kegiatan: perkemahan pramuka (placeholder)"><span class="ph-label">Foto kegiatan</span></div><figcaption>Perkemahan Pramuka</figcaption></figure></a></li>
+        <li><a href="/galeri/praktikum-ipa"><figure><div class="ph ph--sage" role="img" aria-label="Foto kegiatan: praktikum IPA (placeholder)"><span class="ph-label">Foto kegiatan</span></div><figcaption>Praktikum IPA</figcaption></figure></a></li>
+        <li><a href="/galeri/pekan-bahasa"><figure><div class="ph ph--dusk" role="img" aria-label="Foto kegiatan: pekan bahasa (placeholder)"><span class="ph-label">Foto kegiatan</span></div><figcaption>Pekan Bahasa</figcaption></figure></a></li>
+        <li><a href="/galeri/hadrah"><figure><div class="ph ph--sage" role="img" aria-label="Foto kegiatan: latihan hadrah (placeholder)"><span class="ph-label">Foto kegiatan</span></div><figcaption>Ekskul Hadrah</figcaption></figure></a></li>
+        <li><a href="/galeri/class-meeting"><figure><div class="ph" role="img" aria-label="Foto kegiatan: class meeting futsal (placeholder)"><span class="ph-label">Foto kegiatan</span></div><figcaption>Class Meeting</figcaption></figure></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== Kontak ===== -->
+  <section class="section" aria-labelledby="judul-kontak">
+    <div class="container kontak">
+      <div class="kontak-card">
+        <p class="eyebrow">Kontak</p>
+        <h2 id="judul-kontak" class="h2">Hubungi kami</h2>
+        <ul class="kontak-list" style="margin-top:20px">
+          <li><span class="kontak-ico" aria-hidden="true"><svg><use href="#i-pin"/></svg></span><div><p class="lbl">Alamat</p><p class="val">Jl. Pendidikan No. 1, Kota Contoh</p></div></li>
+          <li><span class="kontak-ico" aria-hidden="true"><svg><use href="#i-phone"/></svg></span><div><p class="lbl">Telepon / WhatsApp</p><a class="val" href="tel:+6281200000000">0812-0000-0000</a></div></li>
+          <li><span class="kontak-ico" aria-hidden="true"><svg><use href="#i-mail"/></svg></span><div><p class="lbl">Email</p><a class="val" href="mailto:info@mtscontoh.sch.id">info@mtscontoh.sch.id</a></div></li>
+          <li><span class="kontak-ico" aria-hidden="true"><svg><use href="#i-clock"/></svg></span><div><p class="lbl">Jam layanan</p><p class="val">Senin–Jumat 07.00–14.00 · Sabtu 07.00–11.00 WIB</p></div></li>
+        </ul>
+        <div class="kontak-actions">
+          <a class="btn btn--primary" href="https://wa.me/6281200000000"><svg aria-hidden="true"><use href="#i-chat"/></svg> Chat WhatsApp</a>
+          <a class="btn btn--outline" href="/kontak">Halaman kontak</a>
+        </div>
+      </div>
+
+      <div class="map">
+        <svg class="map-art" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+          <rect width="600" height="400" fill="#E9EFE9"/>
+          <rect x="360" y="40" width="190" height="120" rx="14" fill="#D5E9DD"/>
+          <rect x="40" y="250" width="160" height="110" rx="14" fill="#D5E9DD"/>
+          <path d="M0 300 C120 280 180 330 300 300 S480 250 600 270" fill="none" stroke="#BFD6E6" stroke-width="18"/>
+          <g stroke="#FFFFFF" stroke-width="14" fill="none" stroke-linecap="round">
+            <path d="M0 190 H600"/><path d="M250 0 V400"/><path d="M60 0 L420 400"/><path d="M430 0 V230 H600"/>
+          </g>
+          <g stroke="#F6E3B4" stroke-width="8" fill="none"><path d="M0 190 H600"/></g>
+          <g transform="translate(250 190)">
+            <circle r="34" fill="#0F6B45" opacity=".15"/>
+            <path d="M0 -4 c-12 0 -20 -9 -20 -20 a20 20 0 0 1 40 0 c0 11 -8 20 -20 20z" fill="#0F6B45"/>
+            <circle cy="-24" r="7" fill="#fff"/>
+          </g>
+        </svg>
+        <div class="map-cta">
+          <p><strong>Lokasi madrasah</strong>Peta interaktif dimuat di halaman Kontak</p>
+          <a class="btn btn--primary" href="https://maps.google.com/?q=Jl.+Pendidikan+No.+1,+Kota+Contoh">Buka di Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">
+        <svg aria-hidden="true" focusable="false"><use href="#logo"/></svg>
+        <div><strong>MTs Contoh Al-Hikmah</strong><span>Madrasah Tsanawiyah · Terakreditasi A</span></div>
+      </div>
+      <address style="font-style:normal">Jl. Pendidikan No. 1, Kota Contoh</address>
+      <dl class="footer-id">
+        <dt>NSM</dt><dd>121200000000</dd>
+        <dt>NPSN</dt><dd>00000000</dd>
+      </dl>
+    </div>
+    <nav aria-label="Tautan cepat">
+      <h2>Tautan cepat</h2>
+      <ul class="footer-links">
+        <li><a href="/profil">Profil</a></li>
+        <li><a href="/guru-staf">Guru &amp; Staf</a></li>
+        <li><a href="/akademik">Akademik</a></li>
+        <li><a href="/kesiswaan">Kesiswaan</a></li>
+        <li><a href="/ppdb">PPDB</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Informasi">
+      <h2>Informasi</h2>
+      <ul class="footer-links">
+        <li><a href="/berita">Berita &amp; Pengumuman</a></li>
+        <li><a href="/agenda">Agenda</a></li>
+        <li><a href="/galeri">Galeri</a></li>
+        <li><a href="/unduhan">Unduhan</a></li>
+        <li><a href="/kontak">Kontak</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h2>Ikuti kami</h2>
+      <p>Telepon/WA: <a class="footer-tel" href="tel:+6281200000000">0812-0000-0000</a></p>
+      <div class="sosmed">
+        <a href="https://instagram.com/"><svg aria-hidden="true"><use href="#i-ig"/></svg>Instagram</a>
+        <a href="https://youtube.com/"><svg aria-hidden="true"><use href="#i-yt"/></svg>YouTube</a>
+        <a href="https://facebook.com/"><svg aria-hidden="true"><use href="#i-fb"/></svg>Facebook</a>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; 2026 MTs Contoh Al-Hikmah. Hak cipta dilindungi.</p>
+    <a href="/kebijakan-privasi">Kebijakan privasi</a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var toggle = document.querySelector('.menu-toggle');
+  var nav = document.getElementById('menu-utama');
+  var label = toggle.querySelector('.menu-toggle-label');
+  if (!toggle || !nav) return;
+
+  function setOpen(isOpen) {
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    nav.classList.toggle('is-open', isOpen);
+    label.textContent = isOpen ? 'Tutup' : 'Menu';
+  }
+
+  toggle.addEventListener('click', function () {
+    setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+
+  // Tutup menu HP bila layar diperlebar ke tampilan desktop
+  window.matchMedia('(min-width: 1080px)').addEventListener('change', function (mq) {
+    if (mq.matches) setOpen(false);
+  });
+})();
+</script>
+</body>
+</html>
