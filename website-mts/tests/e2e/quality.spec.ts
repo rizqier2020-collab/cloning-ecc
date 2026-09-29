@@ -35,3 +35,35 @@ test("semua tautan internal di semua halaman mengarah ke halaman yang ada", asyn
   }
   expect(rusak).toEqual([]);
 });
+
+test.describe("header keamanan & CSP", () => {
+  test("header CSP, HSTS, dan COOP terpasang", async ({ request }) => {
+    const res = await request.get("/");
+    const h = res.headers();
+    expect(h["content-security-policy"]).toContain("frame-ancestors 'none'");
+    expect(h["content-security-policy"]).not.toContain("unsafe-eval");
+    expect(h["strict-transport-security"]).toBe("max-age=63072000; includeSubDomains");
+    expect(h["cross-origin-opener-policy"]).toBe("same-origin");
+  });
+
+  test("tidak ada pelanggaran CSP di semua halaman (termasuk peta & font)", async ({ page }) => {
+    test.setTimeout(120_000);
+    const pelanggaran: string[] = [];
+    page.on("console", (msg) => {
+      if (/Content Security Policy|Refused to/i.test(msg.text())) pelanggaran.push(`${page.url()}: ${msg.text()}`);
+    });
+    for (const path of RUTE) {
+      await page.goto(path);
+      await page.evaluate(() => document.fonts.ready);
+    }
+    const fontTermuat = await page.evaluate(() =>
+      [...document.fonts].some((f) => f.family.includes("Space Grotesk") && f.status === "loaded"),
+    );
+    expect(fontTermuat).toBe(true);
+    await page.goto("/kontak");
+    await page.getByRole("button", { name: "Tampilkan peta di sini" }).click();
+    await expect(page.locator("iframe")).toBeVisible();
+    await page.waitForTimeout(1500);
+    expect(pelanggaran).toEqual([]);
+  });
+});

@@ -1,10 +1,9 @@
 import { AgendaRows } from "@/components/home/AgendaRows";
 import { PageIntro } from "@/components/ui/PageIntro";
-import { pisahAgenda } from "@/lib/collections";
-import { getAgenda } from "@/lib/content/repository";
+import { pisahAgendaEntri } from "@/lib/collections";
+import { getAgenda, getUnduhan } from "@/lib/content/repository";
 import { hariIniIso } from "@/lib/date";
 import { buatMetadata } from "@/lib/seo";
-import { getUnduhan } from "@/lib/content/repository";
 
 export const metadata = buatMetadata({
   judul: "Agenda",
@@ -13,10 +12,7 @@ export const metadata = buatMetadata({
 });
 
 export default function AgendaPage() {
-  const { akanDatang, selesai } = pisahAgenda(
-    getAgenda().map((a) => ({ ...a, mulai: a.data.mulai, selesai: a.data.selesai })),
-    hariIniIso(),
-  );
+  const { akanDatang, selesai } = pisahAgendaEntri(getAgenda(), hariIniIso());
   const kalender = getUnduhan().find((u) => u.data.berkas?.includes("kalender"));
 
   return (

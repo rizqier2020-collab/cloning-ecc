@@ -62,3 +62,19 @@ export function pisahAgenda<T extends AgendaLike>(
     selesai: sortByDateDesc(selesai, (i) => i.mulai),
   };
 }
+
+/**
+ * pisahAgenda untuk entri konten (tanggal di `data`). Mengembalikan entri aslinya,
+ * dipakai beranda dan halaman Agenda.
+ */
+export function pisahAgendaEntri<T extends { readonly data: AgendaLike }>(
+  items: readonly T[],
+  hariIni: string,
+): { akanDatang: T[]; selesai: T[] } {
+  const bungkus = items.map((entri) => ({ entri, mulai: entri.data.mulai, selesai: entri.data.selesai }));
+  const hasil = pisahAgenda(bungkus, hariIni);
+  return {
+    akanDatang: hasil.akanDatang.map((b) => b.entri),
+    selesai: hasil.selesai.map((b) => b.entri),
+  };
+}

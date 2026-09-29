@@ -3,6 +3,19 @@ import { expect, test } from "@playwright/test";
 test.describe("menu HP", () => {
   test.use({ viewport: { width: 390, height: 844 } });
 
+  test("panel tertutup setelah navigasi Kembali", async ({ page }) => {
+    await page.goto("/");
+    const toggle = page.getByRole("button", { name: "Menu" });
+    await toggle.click();
+    await page.getByRole("navigation", { name: "Menu utama" }).getByRole("link", { name: "Kontak" }).click();
+    await expect(page).toHaveURL(/\/kontak$/);
+    await toggle.click();
+    await expect(toggle).toHaveAttribute("aria-expanded", "true");
+    await page.goBack();
+    await expect(page).toHaveURL(/\/$/);
+    await expect(toggle).toHaveAttribute("aria-expanded", "false");
+  });
+
   test("tombol membuka/menutup panel; Esc menutup dan mengembalikan fokus", async ({ page }) => {
     await page.goto("/");
     const toggle = page.getByRole("button", { name: "Menu" });
@@ -163,6 +176,18 @@ test.describe("aksesibilitas dasar", () => {
     await page.goto("/kontak");
     await expect(page.locator("iframe")).toHaveCount(0);
     await page.getByRole("button", { name: "Tampilkan peta di sini" }).click();
-    await expect(page.locator("iframe")).toHaveAttribute("title", /Peta lokasi/);
+    const peta = page.locator("iframe");
+    await expect(peta).toHaveAttribute("title", /Peta lokasi/);
+    await expect(peta).toHaveAttribute("sandbox", "allow-scripts allow-same-origin allow-popups");
+    await expect(peta).toHaveAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+    await expect(peta).not.toHaveAttribute("allowfullscreen", /.*/);
+    await expect(peta).toBeFocused();
+  });
+
+  test("salinan kedua marquee tidak bisa difokus (inert)", async ({ page }) => {
+    await page.goto("/");
+    const salinan = page.locator(".marquee__track > .marquee__group:nth-child(2)");
+    await expect(salinan.first()).toHaveAttribute("inert", "");
+    await expect(salinan.first()).toHaveAttribute("aria-hidden", "true");
   });
 });

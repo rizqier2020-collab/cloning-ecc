@@ -3,7 +3,11 @@
 import { type CSSProperties, type ReactNode, useState } from "react";
 
 interface MarqueeProps {
-  /** Isi yang digeser; dirender dua kali (salinan kedua aria-hidden). */
+  /**
+   * Isi yang digeser; dirender dua kali (salinan kedua aria-hidden + inert).
+   * WAJIB teks/elemen dekoratif saja — tanpa tautan, tombol, atau elemen fokus lain,
+   * karena seluruh jalur aria-hidden dan isi lengkapnya disediakan lewat `srContent`.
+   */
   readonly children: ReactNode;
   /** Versi utuh untuk pembaca layar (mis. <p> atau <ul> dengan kelas sr-only). */
   readonly srContent: ReactNode;
@@ -35,7 +39,7 @@ export function Marquee({
       {srContent}
       <div className="marquee__track" aria-hidden="true">
         <div className={group}>{children}</div>
-        <div className={group} aria-hidden="true">
+        <div className={group} aria-hidden="true" inert>
           {children}
         </div>
       </div>

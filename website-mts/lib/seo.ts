@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { site } from "./site";
 
 export const SITE_URL_DEFAULT = "https://mts-contoh-alhikmah.vercel.app";
 
@@ -26,9 +27,13 @@ interface MetadataInput {
   readonly terbit?: string;
 }
 
-/** Metadata per halaman: judul (dipakai template di layout), deskripsi, canonical, OG. */
+/**
+ * Metadata per halaman: judul (dipakai template di layout), deskripsi, canonical, OG.
+ * openGraph halaman MENGGANTI (tidak digabung dengan) openGraph layout, jadi siteName
+ * dan locale diulang di sini.
+ */
 export function buatMetadata({ judul, deskripsi, path, jenis = "website", terbit }: MetadataInput): Metadata {
-  const base = { title: judul, description: deskripsi, url: path };
+  const base = { title: judul, description: deskripsi, url: path, siteName: site.nama, locale: "id_ID" };
   return {
     title: judul,
     description: deskripsi,

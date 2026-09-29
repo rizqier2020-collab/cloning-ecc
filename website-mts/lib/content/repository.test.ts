@@ -1,5 +1,7 @@
 import { describe, expect, test } from "vitest";
+import { ContentValidationError } from "./loader";
 import {
+  cekRujukanBerita,
   getAgenda,
   getAlbum,
   getAlbums,
@@ -40,6 +42,13 @@ describe("content repository (real content/)", () => {
 
   test("prestasi: at least 3", () => {
     expect(getPrestasi().length).toBeGreaterThanOrEqual(3);
+  });
+
+  test("prestasi: every berita reference points at an existing news slug", () => {
+    const slugBerita = new Set(getBerita().map((b) => b.slug));
+    const rujukan = getPrestasi().flatMap((p) => (p.data.berita ? [p.data.berita] : []));
+    expect(rujukan.length).toBeGreaterThan(0);
+    for (const slug of rujukan) expect(slugBerita.has(slug), slug).toBe(true);
   });
 
   test("galeri: at least 9 albums covering all four categories", () => {
@@ -88,5 +97,24 @@ describe("content repository (real content/)", () => {
   test("halaman: static pages exist and fail clearly when missing", () => {
     expect(getHalaman("sejarah").data.judul).toBeTruthy();
     expect(() => getHalaman("tidak-ada")).toThrow(/tidak ditemukan/i);
+  });
+});
+
+describe("cekRujukanBerita", () => {
+  const prestasi = (berita?: string) => ({
+    slug: "juara",
+    file: "content/prestasi/2026-09-20-juara.md",
+    body: "",
+    data: { judul: "Juara", tanggal: "2026-09-20", tingkat: "Provinsi" as const, peraih: "A", berita },
+  });
+
+  test("passes when references exist or are absent", () => {
+    expect(() => cekRujukanBerita([prestasi("ada"), prestasi()], new Set(["ada"]))).not.toThrow();
+  });
+
+  test("throws a ContentValidationError naming the file and the missing slug", () => {
+    const cek = () => cekRujukanBerita([prestasi("hilang")], new Set(["ada"]));
+    expect(cek).toThrow(ContentValidationError);
+    expect(cek).toThrow(/content\/prestasi\/2026-09-20-juara\.md[\s\S]*berita: "hilang"/);
   });
 });

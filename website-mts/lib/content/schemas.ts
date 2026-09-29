@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { toIsoDate } from "../date";
-import { PPDB_STATUS } from "../ppdb";
+import { isTautanPendaftaranValid, PENDAFTARAN_HOST, PPDB_STATUS } from "../ppdb";
 
 // Pesan galat zod dalam Bahasa Indonesia.
 z.config(z.locales.id());
@@ -145,14 +145,16 @@ export const ekstrakurikulerSchema = z.object({
   slug: slug.optional(),
 });
 
+/** Berkas PDF langsung di public/unduhan, mis. "/unduhan/brosur-ppdb.pdf". */
+const berkasUnduhan = z
+  .string()
+  .regex(/^\/unduhan\/[a-z0-9][a-z0-9-]*\.pdf$/, 'berkas harus berupa "/unduhan/nama-berkas.pdf"');
+
 export const unduhanSchema = z.object({
   judul: teks,
   keterangan: teks,
   tanggal: isoDate,
-  berkas: z
-    .string()
-    .regex(/^\/unduhan\/[a-z0-9][a-z0-9-]*\.pdf$/, 'berkas harus berupa "/unduhan/nama-berkas.pdf"')
-    .optional(),
+  berkas: berkasUnduhan.optional(),
   ukuran: teks.optional(),
   slug: slug.optional(),
 });
@@ -163,6 +165,22 @@ export const halamanSchema = z.object({
 });
 
 /* ---------- Konfigurasi situs (content/site.ts) ---------- */
+
+/** Embed peta hanya dari Google Maps (https://www.google.com/maps…), sesuai CSP frame-src. */
+const embedPeta = z.url({ protocol: /^https$/ }).refine(
+  (value) => {
+    const url = new URL(value);
+    return url.hostname === "www.google.com" && url.pathname.startsWith("/maps");
+  },
+  'embed peta harus tautan Google Maps "https://www.google.com/maps…"',
+);
+
+const tautanPendaftaran = z
+  .string()
+  .refine(
+    isTautanPendaftaranValid,
+    `tautan pendaftaran harus path internal "/…" atau https:// ke ${PENDAFTARAN_HOST.join(", ")} (lihat PENDAFTARAN_HOST di lib/ppdb.ts)`,
+  );
 
 const statistikSchema = z.object({
   label: teks,
@@ -185,7 +203,7 @@ export const siteConfigSchema = z.object({
     telepon: teks.optional(),
     instagram: z.object({ tampil: teks, tautan: z.url({ protocol: /^https$/ }) }),
     youtube: z.object({ tampil: teks, tautan: z.url({ protocol: /^https$/ }) }),
-    peta: z.object({ tautan: z.url({ protocol: /^https$/ }), embed: z.url({ protocol: /^https$/ }) }),
+    peta: z.object({ tautan: z.url({ protocol: /^https$/ }), embed: embedPeta }),
     jamLayanan: z.array(teks).min(1),
   }),
   statistik: z.array(statistikSchema).min(1).max(4),
@@ -198,14 +216,8 @@ export const siteConfigSchema = z.object({
       pengumumanHasil: isoDate.optional(),
       kuota: z.number().int().positive(),
       rombel: z.number().int().positive(),
-      pendaftaranUrl: z
-        .string()
-        .refine(
-          (url) => url.startsWith("/") || /^https:\/\/[^\s/]+\.[^\s]+$/.test(url),
-          "tautan pendaftaran harus https://… (mis. Linktree/Google Form) atau path internal /…",
-        )
-        .optional(),
-      brosur: z.string().startsWith("/unduhan/").optional(),
+      pendaftaranUrl: tautanPendaftaran.optional(),
+      brosur: berkasUnduhan.optional(),
     })
     .superRefine((ppdb, ctx) => {
       if (ppdb.pendaftaran.selesai < ppdb.pendaftaran.mulai) {

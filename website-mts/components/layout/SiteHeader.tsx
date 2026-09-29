@@ -14,7 +14,13 @@ const MENU_ID = "menu-utama";
  */
 export function SiteHeader({ wordmark }: { readonly wordmark: string }) {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
+  /**
+   * Path tempat menu dibuka. Menu hanya terbuka selama path tidak berubah, jadi
+   * navigasi (termasuk tombol Kembali) otomatis menutup panel tanpa efek tambahan.
+   */
+  const [dibukaDi, setDibukaDi] = useState<string | null>(null);
+  const open = dibukaDi === pathname;
+  const setOpen = (buka: boolean) => setDibukaDi(buka ? pathname : null);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const isHome = pathname === "/";
 
@@ -22,7 +28,7 @@ export function SiteHeader({ wordmark }: { readonly wordmark: string }) {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setOpen(false);
+        setDibukaDi(null);
         toggleRef.current?.focus();
       }
     };
@@ -44,7 +50,7 @@ export function SiteHeader({ wordmark }: { readonly wordmark: string }) {
           type="button"
           aria-expanded={open}
           aria-controls={MENU_ID}
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => setOpen(!open)}
         >
           <span className="menu-toggle__bars" aria-hidden="true" />
           <span className="sr-only">Menu</span>

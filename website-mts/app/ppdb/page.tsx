@@ -1,21 +1,26 @@
+import type { Metadata } from "next";
 import { PpdbSteps } from "@/components/home/PpdbSteps";
 import { PageIntro } from "@/components/ui/PageIntro";
 import { Prose } from "@/components/ui/Prose";
 import { alurPpdb, biayaPpdb, faqPpdb, jalurPpdb, syaratPpdb } from "@/content/ppdb";
 import { getHalaman } from "@/lib/content/repository";
+import { hariIniIso } from "@/lib/date";
 import { getPpdbInfo } from "@/lib/ppdb";
 import { DaftarButton } from "@/components/ui/DaftarButton";
 import { buatMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-const info = getPpdbInfo(site.ppdb);
-const halaman = getHalaman("ppdb");
+/** Dihitung per render (bukan saat modul dimuat) agar status ikut segar setiap revalidasi ISR. */
+const infoHariIni = () => getPpdbInfo(site.ppdb, hariIniIso());
 
-export const metadata = buatMetadata({
-  judul: info.judul,
-  deskripsi: `${info.judul} ${site.nama}: ${info.statusLabel.toLowerCase()}, periode ${info.periode}. Syarat, jadwal, biaya, alur, dan tanya jawab.`,
-  path: "/ppdb",
-});
+export function generateMetadata(): Metadata {
+  const info = infoHariIni();
+  return buatMetadata({
+    judul: info.judul,
+    deskripsi: `${info.judul} ${site.nama}: ${info.statusLabel.toLowerCase()}, periode ${info.periode}. Syarat, jadwal, biaya, alur, dan tanya jawab.`,
+    path: "/ppdb",
+  });
+}
 
 function Seksi({ id, judul, children }: { readonly id: string; readonly judul: string; readonly children: React.ReactNode }) {
   return (
@@ -31,6 +36,8 @@ function Seksi({ id, judul, children }: { readonly id: string; readonly judul: s
 }
 
 export default function PpdbPage() {
+  const info = infoHariIni();
+  const halaman = getHalaman("ppdb");
   const { formulir } = info;
   return (
     <>

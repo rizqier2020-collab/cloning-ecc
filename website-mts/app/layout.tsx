@@ -31,6 +31,13 @@ export const metadata: Metadata = {
   formatDetection: { telephone: false },
 };
 
+/**
+ * ISR harian: agenda "akan datang", daftar agenda beranda, tahun di footer, dan status
+ * PPDB bergantung pada tanggal hari ini. Di Vercel halaman dibuat ulang paling lambat
+ * sekali sehari tanpa perlu build ulang; halaman tetap statis (bukan render per request).
+ */
+export const revalidate = 86400;
+
 export const viewport: Viewport = {
   themeColor: "#fdfcfa",
 };

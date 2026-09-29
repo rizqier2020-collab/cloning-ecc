@@ -3,6 +3,7 @@ import {
   countByKategori,
   filterByKategori,
   pisahAgenda,
+  pisahAgendaEntri,
   sortByDateAsc,
   sortByDateDesc,
 } from "./collections";
@@ -73,5 +74,19 @@ describe("pisahAgenda", () => {
   test("treats a single-day event on today as upcoming", () => {
     const { akanDatang } = pisahAgenda([{ id: "x", mulai: "2026-09-29" }], "2026-09-29");
     expect(akanDatang).toHaveLength(1);
+  });
+});
+
+describe("pisahAgendaEntri", () => {
+  test("splits content entries by data.mulai/data.selesai and returns the original entries", () => {
+    const entri = [
+      { slug: "lalu", data: { mulai: "2026-09-01", selesai: "2026-09-03" } },
+      { slug: "nanti", data: { mulai: "2026-10-12" } },
+      { slug: "berjalan", data: { mulai: "2026-09-27", selesai: "2026-10-02" } },
+    ];
+    const { akanDatang, selesai } = pisahAgendaEntri(entri, "2026-09-29");
+    expect(akanDatang.map((a) => a.slug)).toEqual(["berjalan", "nanti"]);
+    expect(selesai).toEqual([entri[0]]);
+    expect(akanDatang[0]).toBe(entri[2]);
   });
 });

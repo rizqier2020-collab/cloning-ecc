@@ -35,6 +35,13 @@ describe("buatMetadata", () => {
     });
   });
 
+  test("repeats siteName and id_ID locale because child openGraph replaces the layout's", () => {
+    const meta = buatMetadata({ judul: "Kontak", deskripsi: "x", path: "/kontak" });
+    expect(meta.openGraph).toMatchObject({ siteName: "MTs Contoh Al-Hikmah", locale: "id_ID" });
+    const artikel = buatMetadata({ judul: "A", deskripsi: "x", path: "/a", jenis: "article", terbit: "2026-09-20" });
+    expect(artikel.openGraph).toMatchObject({ siteName: "MTs Contoh Al-Hikmah", locale: "id_ID" });
+  });
+
   test("supports article type for news pages", () => {
     const meta = buatMetadata({
       judul: "Juara",

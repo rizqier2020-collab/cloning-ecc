@@ -44,6 +44,13 @@ describe("loadCollection", () => {
     }
   });
 
+  test("rejects executable ---js front matter instead of evaluating it", () => {
+    const load = () => loadCollection(path.join(FIXTURES, "js-frontmatter/berita"), beritaSchema);
+    expect(load).toThrow(ContentValidationError);
+    expect(load).toThrow(/eval-js\.md[\s\S]*front matter JavaScript tidak diizinkan/);
+    expect((globalThis as Record<string, unknown>).__frontmatterDieksekusi).toBeUndefined();
+  });
+
   test("fails when two files resolve to the same slug", () => {
     expect(() => loadCollection(path.join(FIXTURES, "duplikat/berita"), beritaSchema)).toThrow(
       /slug "sama" dipakai lebih dari satu berkas/,

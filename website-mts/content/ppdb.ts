@@ -1,3 +1,5 @@
+import { site } from "@/lib/site";
+
 /**
  * Isi halaman /ppdb. Status & periode pendaftaran ada di content/site.ts (ppdb).
  * SEMUA DATA ADALAH CONTOH — jalur, biaya, dan tanggal wajib dikonfirmasi panitia.
@@ -11,7 +13,8 @@ export interface LangkahJadwal {
 }
 
 export const jadwalPpdb: readonly LangkahJadwal[] = [
-  { judul: "Pendaftaran online", mulai: "2027-01-11", selesai: "2027-03-13", keterangan: "Isi Google Form lewat tautan pendaftaran." },
+  // Tanggal pendaftaran diambil dari content/site.ts (ppdb.pendaftaran) agar hanya ditulis sekali.
+  { judul: "Pendaftaran online", ...site.ppdb.pendaftaran, keterangan: "Isi Google Form lewat tautan pendaftaran." },
   { judul: "Tes baca Al-Qur'an & wawancara", mulai: "2027-03-20", keterangan: "Di madrasah, 07.30–12.00 WIB." },
   { judul: "Pengumuman & daftar ulang", mulai: "2027-04-03", selesai: "2027-04-10", keterangan: "Hasil diumumkan di halaman Pengumuman." },
 ];

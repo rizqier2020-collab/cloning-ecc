@@ -1,8 +1,9 @@
 # Website MTs Contoh Al-Hikmah
 
 Website publik madrasah (Tahap 2): Next.js 16 (App Router) + TypeScript + Tailwind CSS v4.
-Semua halaman dibuat statis saat build. Konten dikelola programmer sebagai berkas di folder
-`content/` — tanpa panel admin dan tanpa database.
+Semua halaman dibuat statis saat build dan dibuat ulang otomatis sekali sehari (ISR,
+`export const revalidate = 86400` di `app/layout.tsx`). Konten dikelola programmer sebagai berkas
+di folder `content/` — tanpa panel admin dan tanpa database.
 
 > **Semua data di repo ini adalah data contoh** (nama sekolah, NSM/NPSN, alamat, kontak,
 > nama guru, angka statistik, berita, dll.). Ganti dengan data asli sebelum terbit.
@@ -21,12 +22,12 @@ npm run dev          # http://localhost:3000
 | Perintah | Fungsi |
 |---|---|
 | `npm run dev` | Server pengembangan |
-| `npm run build` | Build produksi (semua halaman statis). **Gagal bila ada konten tidak valid.** |
+| `npm run build` | Build produksi (semua halaman statis, revalidasi harian). **Gagal bila ada konten tidak valid.** |
 | `npm run start` | Menjalankan hasil build |
 | `npm run lint` | ESLint |
 | `npm run typecheck` | Membuat tipe rute (`next typegen`) lalu `tsc --noEmit` |
 | `npm run test` | Unit test Vitest + laporan coverage (ambang 80%) |
-| `npm run test:e2e` | Build + start di port 3100, lalu uji Playwright (semua rute di 390 & 1440px, menu HP, filter, carousel, tanpa JS, reduced motion) |
+| `npm run test:e2e` | Build + start di port 3100, lalu uji Playwright (semua rute di 390 & 1440px, menu HP, filter, carousel, tanpa JS, reduced motion, axe WCAG, tautan internal, header keamanan & CSP) |
 
 Playwright memakai Chromium di `/opt/pw-browsers/chromium-1194/chrome-linux/chrome`; ganti lewat
 env `PW_CHROMIUM_PATH`. Tangkapan layar penuh: `SCREENSHOT_DIR=/tmp/shots npx playwright test screenshots`.
@@ -130,8 +131,11 @@ kategori: Ujian               # Akademik | Ujian | Libur | Kegiatan
 ---
 ```
 
-Pembagian "Akan datang" / "Telah berlangsung" dihitung **saat build** (zona WIB). Karena situs
-statis, lakukan build ulang (push ke GitHub) minimal saat ada perubahan agenda.
+Pembagian "Akan datang" / "Telah berlangsung" dihitung dari tanggal hari ini (zona WIB) saat halaman
+dibuat. Di Vercel, halaman dibuat ulang otomatis paling lambat sekali sehari (ISR `revalidate = 86400`
+di `app/layout.tsx`), sehingga agenda beranda, halaman Agenda, tahun di footer, dan status PPDB ikut
+segar tanpa build ulang. Pada hosting statis murni (tanpa ISR), tetap lakukan build ulang berkala.
+Perubahan isi konten tetap perlu push ke GitHub (build ulang).
 
 ### Prestasi — `content/prestasi/`
 
@@ -145,6 +149,9 @@ penyelenggara: "LPTQ Kabupaten Contoh"   # opsional
 berita: juara-mtq-kabupaten   # opsional: slug berita terkait
 ---
 ```
+
+`berita` wajib menunjuk slug berita yang benar-benar ada di `content/berita/`; bila tidak, build gagal
+dengan pesan yang menyebut berkas prestasinya.
 
 ### Galeri (album) — `content/galeri/`
 
@@ -253,7 +260,7 @@ ppdb: {
   kuota: 192,
   rombel: 6,
   pendaftaranUrl: undefined,    // tautan Linktree PPDB, mis. "https://linktr.ee/nama-madrasah"
-  brosur: "/unduhan/brosur-ppdb-2027-2028.pdf",
+  brosur: "/unduhan/brosur-ppdb-2027-2028.pdf",   // wajib "/unduhan/nama-berkas.pdf"
 },
 ```
 
@@ -272,12 +279,24 @@ yang ditautkan dari halaman Linktree PPDB:
    Bila formulir meminta unggah berkas, pendaftar harus masuk akun Google — jelaskan ini di deskripsi formulir.
 2. Buat halaman Linktree PPDB dan tambahkan tautan ke Google Form (boleh juga brosur dan WhatsApp panitia).
 3. Isi `pendaftaranUrl` dengan tautan Linktree (wajib `https://`), lalu ubah `status` menjadi `"dibuka"`.
+   Demi keamanan, hanya host berikut yang diterima (konstanta `PENDAFTARAN_HOST` di `lib/ppdb.ts`):
+   `linktr.ee`, `forms.gle`, `docs.google.com`, `s.id`. Tautan tanpa `https:`, berisi
+   `username@`/`user:pass@`, atau host lain menggagalkan build. Path internal (`/ppdb/daftar`) juga
+   boleh, tetapi `//host` (protocol-relative) ditolak.
+   **Menambah host** (mis. layanan formulir lain): tambahkan nama host persis (tanpa `https://` dan
+   tanpa path, mis. `"bit.ly"`) ke array `PENDAFTARAN_HOST` di `lib/ppdb.ts`, lalu jalankan `npm test`.
 4. Tombol **Daftar online** di beranda dan `/ppdb` akan membuka Linktree di tab baru.
 
 Tautan hanya dipakai saat status `dibuka`, jadi aman diisi lebih awal.
 
-Status ditulis manual (bukan otomatis dari tanggal) agar panitia bisa memperpanjang atau menutup lebih awal.
-Jadwal tiga langkah ada di `content/ppdb.ts` — samakan tanggalnya bila periode berubah.
+Status ditulis manual agar panitia bisa membuka atau menutup lebih awal, dengan satu pengaman:
+bila `status: "dibuka"` tetapi hari ini (WIB) sudah lewat `pendaftaran.selesai`, situs menampilkan
+status **ditutup** (tanpa tombol Daftar basi). Untuk memperpanjang, ubah `pendaftaran.selesai`.
+`"belum-dibuka"` tidak pernah berubah otomatis.
+
+Jadwal tiga langkah ada di `content/ppdb.ts`. Baris "Pendaftaran online" diambil langsung dari
+`ppdb.pendaftaran` di `content/site.ts` (tanggal cukup ditulis sekali); tanggal tes dan daftar ulang
+tetap diisi di `content/ppdb.ts`.
 
 ## Mengganti warna aksen
 
@@ -309,6 +328,22 @@ di bingkai rasio yang sama, sehingga efek zoom dan monokrom→warna tetap berjal
 masih placeholder statis di `app/page.tsx` (bagian HERO): ganti `<div className="ph hero__ph">` dengan
 `<Photo src="/images/hero.webp" alt="..." priority className="hero__ph" />` dan beri lapisan terang
 di area teks sesuai panduan desain §3.2.
+
+## Keamanan (header HTTP)
+
+`next.config.ts` memasang header di semua halaman: `Content-Security-Policy`,
+`Strict-Transport-Security` (2 tahun, termasuk subdomain), `Cross-Origin-Opener-Policy: same-origin`,
+`X-Frame-Options: DENY`, `X-Content-Type-Options`, `Referrer-Policy`, dan `Permissions-Policy`.
+
+- CSP hanya mengizinkan sumber dari situs sendiri. `script-src`/`style-src` memakai `'unsafe-inline'`
+  karena halaman statis (SSG/ISR) tidak bisa memakai nonce per request, sedangkan Next.js menyisipkan
+  skrip hidrasi inline. `'unsafe-eval'` hanya ditambahkan saat `next dev`.
+- Font di-host sendiri (`@fontsource`), jadi `font-src 'self'` cukup. Bila menambah layanan pihak
+  ketiga (analytics, font Google, video YouTube), tambahkan domainnya ke CSP di `next.config.ts`.
+- Peta: `kontak.peta.embed` wajib `https://www.google.com/maps…` (divalidasi saat build), cocok
+  dengan `frame-src https://www.google.com`. iframe peta di-*sandbox*
+  (`allow-scripts allow-same-origin allow-popups`).
+- Front matter Markdown hanya YAML; blok `---js` ditolak (tidak pernah dijalankan).
 
 ## Aksesibilitas & perilaku tanpa JS
 

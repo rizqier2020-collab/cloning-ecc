@@ -26,11 +26,30 @@ export class ContentValidationError extends Error {
  * Skema bawaan js-yaml mengubah "2026-02-30" menjadi 2 Maret tanpa galat; dengan
  * CORE_SCHEMA tanggal tetap string lalu divalidasi ketat oleh zod.
  */
+const tolakJavaScript = (): never => {
+  throw new Error('front matter JavaScript tidak diizinkan; gunakan YAML ("---")');
+};
+
+/**
+ * Engine "js"/"javascript" bawaan gray-matter menjalankan `---js` dengan eval.
+ * Konten hanya boleh berupa data, jadi keduanya dimatikan (pertahanan berlapis).
+ */
 const MATTER_OPTIONS = {
   engines: {
     yaml: (source: string) => (yaml.load(source, { schema: yaml.CORE_SCHEMA }) ?? {}) as object,
+    js: tolakJavaScript,
+    javascript: tolakJavaScript,
   },
 };
+
+function bacaFrontmatter(raw: string, file: string): { data: unknown; content: string } {
+  try {
+    return matter(raw, MATTER_OPTIONS);
+  } catch (err) {
+    const pesan = err instanceof Error ? err.message : String(err);
+    throw new ContentValidationError(`Konten tidak valid di ${relatif(file)}:\n  - (frontmatter): ${pesan}`);
+  }
+}
 
 const DATE_PREFIX = /^\d{4}-\d{2}(?:-\d{2})?-/;
 
@@ -55,7 +74,7 @@ function formatIssues(issues: readonly z.core.$ZodIssue[]): string {
 /** Baca & validasi satu berkas Markdown. */
 export function loadFile<S extends z.ZodType>(file: string, schema: S): Entry<z.output<S>> {
   const raw = fs.readFileSync(file, "utf8");
-  const { data, content } = matter(raw, MATTER_OPTIONS);
+  const { data, content } = bacaFrontmatter(raw, file);
   const result = schema.safeParse(data);
   if (!result.success) {
     throw new ContentValidationError(

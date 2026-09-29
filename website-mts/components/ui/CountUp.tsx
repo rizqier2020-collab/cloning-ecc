@@ -7,7 +7,8 @@ const AMBANG_TERLIHAT = 0.6;
 
 /**
  * Angka yang naik dari 0 ke nilai akhir saat 60% terlihat (sekali saja).
- * HTML awal berisi nilai akhir (tanpa JS tetap benar). Angka animasi aria-hidden;
+ * HTML awal berisi nilai akhir (tanpa JS tetap benar); angka baru di-nol-kan tepat
+ * sebelum animasi dimulai, jadi hidrasi tidak membuat angka yang terlihat menjadi 0. Angka animasi aria-hidden;
  * nilai akhir tersedia untuk pembaca layar lewat .sr-only. Animasi menulis langsung
  * ke textContent (seperti mockup) agar tidak memicu render ulang React tiap frame.
  */
@@ -35,12 +36,12 @@ export function CountUp({ nilai }: { readonly nilai: number }) {
       (entries) => {
         if (entries.some((e) => e.isIntersecting)) {
           io.disconnect();
+          el.textContent = "0";
           jalankan();
         }
       },
       { threshold: AMBANG_TERLIHAT },
     );
-    el.textContent = "0";
     io.observe(el);
     return () => {
       io.disconnect();

@@ -62,8 +62,24 @@ export function getAgenda(): Agenda[] {
   return sortByDateAsc(koleksi("agenda", agendaSchema), (a) => a.data.mulai);
 }
 
+/** Pastikan setiap `berita` di prestasi menunjuk slug berita yang ada. */
+export function cekRujukanBerita(prestasi: readonly Prestasi[], slugBerita: ReadonlySet<string>): void {
+  const rusak = prestasi.find((p) => p.data.berita && !slugBerita.has(p.data.berita));
+  if (rusak) {
+    throw new ContentValidationError(
+      `Konten tidak valid di ${rusak.file}:\n  - berita: "${rusak.data.berita}" tidak ditemukan di content/berita/. ` +
+        `Isi dengan slug berita yang ada atau hapus field ini.`,
+    );
+  }
+}
+
 export function getPrestasi(): Prestasi[] {
-  return sortByDateDesc(koleksi("prestasi", prestasiSchema), (p) => p.data.tanggal);
+  const prestasi = memo("prestasi:tervalidasi", () => {
+    const semua = koleksi("prestasi", prestasiSchema);
+    cekRujukanBerita(semua, new Set(getBerita().map((b) => b.slug)));
+    return semua;
+  });
+  return sortByDateDesc(prestasi, (p) => p.data.tanggal);
 }
 
 export function getAlbums(): Album[] {

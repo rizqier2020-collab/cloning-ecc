@@ -7,7 +7,7 @@ import { StatRow } from "@/components/home/StatRow";
 import { WorkCard } from "@/components/home/WorkCard";
 import { Marquee } from "@/components/ui/Marquee";
 import { SectionHead } from "@/components/ui/SectionHead";
-import { pisahAgenda } from "@/lib/collections";
+import { pisahAgendaEntri } from "@/lib/collections";
 import {
   getAgenda,
   getBerita,
@@ -30,13 +30,11 @@ const TATA_BERITA: readonly { kelas: string; rasio: Rasio }[] = [
 export default function Beranda() {
   const berita = getBerita().slice(0, TATA_BERITA.length);
   const pengumuman = getPengumuman().slice(0, 3);
-  const agenda = pisahAgenda(
-    getAgenda().map((a) => ({ ...a, mulai: a.data.mulai, selesai: a.data.selesai })),
-    hariIniIso(),
-  ).akanDatang.slice(0, 3);
+  const hariIni = hariIniIso();
+  const agenda = pisahAgendaEntri(getAgenda(), hariIni).akanDatang.slice(0, 3);
   const program = getProgramUnggulan();
   const ekskul = getEkstrakurikuler();
-  const ppdb = getPpdbInfo(site.ppdb);
+  const ppdb = getPpdbInfo(site.ppdb, hariIni);
 
   return (
     <>
