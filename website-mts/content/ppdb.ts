@@ -11,7 +11,7 @@ export interface LangkahJadwal {
 }
 
 export const jadwalPpdb: readonly LangkahJadwal[] = [
-  { judul: "Pendaftaran online", mulai: "2027-01-11", selesai: "2027-03-13", keterangan: "Isi formulir dan unggah berkas." },
+  { judul: "Pendaftaran online", mulai: "2027-01-11", selesai: "2027-03-13", keterangan: "Isi Google Form lewat tautan pendaftaran." },
   { judul: "Tes baca Al-Qur'an & wawancara", mulai: "2027-03-20", keterangan: "Di madrasah, 07.30–12.00 WIB." },
   { judul: "Pengumuman & daftar ulang", mulai: "2027-04-03", selesai: "2027-04-10", keterangan: "Hasil diumumkan di halaman Pengumuman." },
 ];
@@ -39,17 +39,17 @@ export const biayaPpdb: readonly { readonly komponen: string; readonly nilai: st
 ];
 
 export const alurPpdb: readonly { readonly judul: string; readonly teks: string }[] = [
-  { judul: "Isi formulir online", teks: "Data calon siswa, orang tua/wali, dan nomor WhatsApp aktif." },
-  { judul: "Unggah berkas", teks: "Kartu Keluarga, akta kelahiran, ijazah/SKL, dan pas foto (PDF/JPG)." },
-  { judul: "Simpan bukti pendaftaran", teks: "Nomor pendaftaran muncul otomatis dan bisa dicetak." },
+  { judul: "Buka tautan pendaftaran", teks: "Tekan tombol Daftar online di halaman ini. Anda diarahkan ke halaman tautan PPDB, lalu pilih Formulir Pendaftaran." },
+  { judul: "Isi Google Form", teks: "Data calon siswa, orang tua/wali, dan nomor WhatsApp aktif. Unggah foto Kartu Keluarga, akta kelahiran, ijazah/SKL, dan pas foto bila diminta (perlu masuk akun Google)." },
+  { judul: "Simpan bukti pendaftaran", teks: "Simpan tangkapan layar halaman terkirim atau email konfirmasi. Panitia menghubungi lewat WhatsApp." },
   { judul: "Ikuti tes & wawancara", teks: "Datang sesuai jadwal dengan membawa bukti pendaftaran." },
   { judul: "Cek pengumuman & daftar ulang", teks: "Siswa diterima melakukan daftar ulang di madrasah." },
 ];
 
 export const faqPpdb: readonly { readonly tanya: string; readonly jawab: string }[] = [
   { tanya: "Apakah pendaftaran dipungut biaya?", jawab: "Tidak. Pendaftaran PPDB gratis. Rincian biaya setelah diterima diumumkan saat daftar ulang." },
-  { tanya: "Bagaimana jika tidak punya komputer?", jawab: "Formulir bisa diisi dari HP. Panitia juga membuka meja bantuan di madrasah pada jam layanan." },
+  { tanya: "Bagaimana jika tidak punya komputer?", jawab: "Google Form bisa diisi dari HP. Panitia juga membuka meja bantuan di madrasah pada jam layanan." },
   { tanya: "Apakah lulusan SD (bukan MI) boleh mendaftar?", jawab: "Boleh. Lulusan SD maupun MI dapat mendaftar di semua jalur." },
-  { tanya: "Bagaimana data pribadi calon siswa dilindungi?", jawab: "Data hanya dipakai untuk keperluan PPDB, disimpan di penyimpanan privat, dan hanya dapat diakses panitia sesuai UU No. 27/2022 tentang Pelindungan Data Pribadi." },
+  { tanya: "Bagaimana data pribadi calon siswa dilindungi?", jawab: "Data hanya dipakai untuk keperluan PPDB dan tersimpan di akun Google milik madrasah yang hanya dapat dibuka panitia, sesuai UU No. 27/2022 tentang Pelindungan Data Pribadi." },
   { tanya: "Kapan hasil seleksi diumumkan?", jawab: "Pada 3 April 2027 melalui halaman Pengumuman di website ini." },
 ];

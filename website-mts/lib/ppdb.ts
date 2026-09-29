@@ -10,8 +10,11 @@ export interface PpdbConfig {
   readonly pengumumanHasil?: string;
   readonly kuota: number;
   readonly rombel: number;
-  /** Diisi di Tahap 3 saat formulir online sudah ada, mis. "/ppdb/daftar". */
-  readonly formulirUrl?: string;
+  /**
+   * Tautan pendaftaran: Linktree/Google Form (https://…) atau path internal ("/…").
+   * Hanya dipakai saat status "dibuka".
+   */
+  readonly pendaftaranUrl?: string;
 }
 
 export interface PpdbInfo {
@@ -26,6 +29,8 @@ export interface PpdbInfo {
     readonly teks: string;
     readonly bisaDaftar: boolean;
     readonly href?: string;
+    /** true bila tautan mengarah ke situs lain (dibuka di tab baru). */
+    readonly eksternal: boolean;
   };
 }
 
@@ -37,7 +42,8 @@ export function getPpdbInfo(ppdb: PpdbConfig): PpdbInfo {
   const periode = formatRentang(mulai, selesai, "panjang");
 
   if (ppdb.status === "dibuka") {
-    const bisaDaftar = Boolean(ppdb.formulirUrl);
+    const href = ppdb.pendaftaranUrl;
+    const bisaDaftar = Boolean(href);
     return {
       judul,
       statusLabel: "Dibuka",
@@ -46,10 +52,11 @@ export function getPpdbInfo(ppdb: PpdbConfig): PpdbInfo {
       formulir: {
         judul: `Formulir pendaftaran online dibuka sampai ${formatTanggal(selesai, "panjang")}`,
         teks: bisaDaftar
-          ? "Isi formulir dari HP atau komputer. Siapkan scan Kartu Keluarga, akta kelahiran, ijazah/SKL, dan pas foto."
+          ? "Tombol di bawah membuka halaman pendaftaran berisi Google Form. Isi dari HP atau komputer, dan siapkan foto Kartu Keluarga, akta kelahiran, ijazah/SKL, dan pas foto."
           : "Formulir online segera tersedia di halaman ini. Sementara itu, hubungi panitia lewat WhatsApp untuk informasi pendaftaran.",
         bisaDaftar,
-        href: bisaDaftar ? ppdb.formulirUrl : undefined,
+        href,
+        eksternal: isEksternal(href),
       },
     };
   }
@@ -72,6 +79,7 @@ export function getPpdbInfo(ppdb: PpdbConfig): PpdbInfo {
         judul: "Pendaftaran online sudah ditutup",
         teks: "Hasil seleksi diumumkan di halaman Pengumuman. Informasi PPDB tahun berikutnya akan disampaikan di website ini.",
         bisaDaftar: false,
+        eksternal: false,
       },
     };
   }
@@ -85,6 +93,12 @@ export function getPpdbInfo(ppdb: PpdbConfig): PpdbInfo {
       judul: `Formulir pendaftaran online dibuka ${formatTanggal(mulai, "panjang")}`,
       teks: `Pendaftaran berlangsung ${periode}. Pelajari syarat dan jadwal di bawah ini, lalu siapkan berkasnya lebih awal.`,
       bisaDaftar: false,
+      eksternal: false,
     },
   };
+}
+
+/** Tautan ke situs lain (https://…) dibuka di tab baru; path internal tidak. */
+export function isEksternal(href: string | undefined): boolean {
+  return Boolean(href && /^https:\/\//.test(href));
 }

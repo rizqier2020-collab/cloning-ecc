@@ -252,7 +252,7 @@ ppdb: {
   pengumumanHasil: "2027-04-03",
   kuota: 192,
   rombel: 6,
-  formulirUrl: undefined,       // isi "/ppdb/daftar" setelah formulir Tahap 3 siap
+  pendaftaranUrl: undefined,    // tautan Linktree PPDB, mis. "https://linktr.ee/nama-madrasah"
   brosur: "/unduhan/brosur-ppdb-2027-2028.pdf",
 },
 ```
@@ -260,8 +260,21 @@ ppdb: {
 | `status` | Bar beranda | Blok formulir di `/ppdb` |
 |---|---|---|
 | `belum-dibuka` | "PPDB 2027/2028 segera dibuka · 11 Jan – 13 Mar 2027 · Info →" | "Formulir pendaftaran online dibuka 11 Januari 2027" |
-| `dibuka` | "PPDB 2027/2028 dibuka · 11 Jan – 13 Mar 2027 · Daftar →" (sama dengan mockup) | "…dibuka sampai 13 Maret 2027" + tombol **Daftar online** bila `formulirUrl` diisi |
+| `dibuka` | "PPDB 2027/2028 dibuka · 11 Jan – 13 Mar 2027 · Daftar →" (sama dengan mockup) | "…dibuka sampai 13 Maret 2027" + tombol **Daftar online** bila `pendaftaranUrl` diisi |
 | `ditutup` | "PPDB 2027/2028 ditutup · Pengumuman hasil 3 Apr 2027 · Lihat info →" | "Pendaftaran online sudah ditutup" |
+
+### Pendaftaran online lewat Linktree + Google Form
+
+Website **tidak menyimpan data pendaftar**. Pendaftaran dilakukan di Google Form milik madrasah,
+yang ditautkan dari halaman Linktree PPDB:
+
+1. Panitia membuat Google Form pendaftaran dengan akun Google madrasah (jawaban tersimpan di Google Sheets).
+   Bila formulir meminta unggah berkas, pendaftar harus masuk akun Google — jelaskan ini di deskripsi formulir.
+2. Buat halaman Linktree PPDB dan tambahkan tautan ke Google Form (boleh juga brosur dan WhatsApp panitia).
+3. Isi `pendaftaranUrl` dengan tautan Linktree (wajib `https://`), lalu ubah `status` menjadi `"dibuka"`.
+4. Tombol **Daftar online** di beranda dan `/ppdb` akan membuka Linktree di tab baru.
+
+Tautan hanya dipakai saat status `dibuka`, jadi aman diisi lebih awal.
 
 Status ditulis manual (bukan otomatis dari tanggal) agar panitia bisa memperpanjang atau menutup lebih awal.
 Jadwal tiga langkah ada di `content/ppdb.ts` — samakan tanggalnya bila periode berubah.

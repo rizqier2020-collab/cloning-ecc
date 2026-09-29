@@ -63,8 +63,11 @@ export const siteConfig = {
     pengumumanHasil: "2027-04-03",
     kuota: 192,
     rombel: 6,
-    /** Isi saat formulir online Tahap 3 sudah siap, mis. "/ppdb/daftar". */
-    formulirUrl: undefined,
+    /**
+     * Tautan pendaftaran online (Linktree yang berisi Google Form), mis. "https://linktr.ee/nama-madrasah".
+     * Tombol "Daftar online" hanya muncul saat status "dibuka" dan tautan ini diisi.
+     */
+    pendaftaranUrl: undefined,
     brosur: "/unduhan/brosur-ppdb-2027-2028.pdf",
   },
 } satisfies SiteConfigInput;

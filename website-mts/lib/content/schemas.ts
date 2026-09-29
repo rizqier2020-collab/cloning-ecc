@@ -198,7 +198,13 @@ export const siteConfigSchema = z.object({
       pengumumanHasil: isoDate.optional(),
       kuota: z.number().int().positive(),
       rombel: z.number().int().positive(),
-      formulirUrl: z.string().startsWith("/").optional(),
+      pendaftaranUrl: z
+        .string()
+        .refine(
+          (url) => url.startsWith("/") || /^https:\/\/[^\s/]+\.[^\s]+$/.test(url),
+          "tautan pendaftaran harus https://… (mis. Linktree/Google Form) atau path internal /…",
+        )
+        .optional(),
       brosur: z.string().startsWith("/unduhan/").optional(),
     })
     .superRefine((ppdb, ctx) => {

@@ -18,6 +18,7 @@ import {
 import type { Rasio } from "@/lib/content/schemas";
 import { formatTanggal, hariIniIso } from "@/lib/date";
 import { getPpdbInfo } from "@/lib/ppdb";
+import { DaftarButton } from "@/components/ui/DaftarButton";
 import { site } from "@/lib/site";
 
 const TATA_BERITA: readonly { kelas: string; rasio: Rasio }[] = [
@@ -202,9 +203,7 @@ export default function Beranda() {
             </p>
             <div className="btn-row">
               {ppdb.formulir.bisaDaftar && ppdb.formulir.href ? (
-                <Link className="btn btn--solid" href={ppdb.formulir.href}>
-                  Daftar online <span aria-hidden="true">→</span>
-                </Link>
+                <DaftarButton href={ppdb.formulir.href} eksternal={ppdb.formulir.eksternal} />
               ) : (
                 <Link className="btn btn--solid" href="/ppdb">
                   Info pendaftaran <span aria-hidden="true">→</span>

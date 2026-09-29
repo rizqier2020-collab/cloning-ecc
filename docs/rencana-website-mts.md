@@ -13,7 +13,7 @@ Rencana pembuatan website resmi Madrasah Tsanawiyah (MTs). Nama sekolah, logo, d
 | Topik | Keputusan |
 |---|---|
 | Pengelola konten | Programmer. Konten disimpan sebagai file Markdown di repo, tanpa panel admin. Perubahan di-push ke GitHub lalu website terbit ulang otomatis. |
-| PPDB | Formulir online di website, termasuk upload berkas dan halaman panitia. |
+| PPDB | **Diperbarui (Tahap 3):** tombol "Daftar online" mengarah ke Linktree PPDB yang berisi Google Form. Data pendaftar tersimpan di Google Form/Sheets milik madrasah; website tidak menyimpan data dan Supabase tidak diperlukan. |
 | Identitas sekolah | Pakai contoh dulu, diganti data asli di tahap 6. |
 
 ## 3. Fitur inti (MVP)
@@ -71,7 +71,7 @@ Rencana pembuatan website resmi Madrasah Tsanawiyah (MTs). Nama sekolah, logo, d
 | Bagian | Pilihan | Catatan |
 |---|---|---|
 | Website | Next.js + Tailwind CSS | Konten dalam Markdown |
-| Backend PPDB | Supabase | Tabel pendaftar, penyimpanan berkas privat, login panitia |
+| PPDB | Linktree + Google Form | Tanpa database; tautan diatur di `content/site.ts` (`pendaftaranUrl`) |
 | Hosting | Vercel (paket gratis) | Website sekolah bersifat non-komersial |
 | Domain | `*.vercel.app` dulu | Nanti bisa pindah ke domain `.sch.id` |
 

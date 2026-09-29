@@ -1,10 +1,10 @@
-import Link from "next/link";
 import { PpdbSteps } from "@/components/home/PpdbSteps";
 import { PageIntro } from "@/components/ui/PageIntro";
 import { Prose } from "@/components/ui/Prose";
 import { alurPpdb, biayaPpdb, faqPpdb, jalurPpdb, syaratPpdb } from "@/content/ppdb";
 import { getHalaman } from "@/lib/content/repository";
 import { getPpdbInfo } from "@/lib/ppdb";
+import { DaftarButton } from "@/components/ui/DaftarButton";
 import { buatMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
@@ -54,9 +54,7 @@ export default function PpdbPage() {
             <p className="text-muted">{formulir.teks}</p>
             <div className="btn-row mt-2">
               {formulir.bisaDaftar && formulir.href ? (
-                <Link className="btn btn--solid" href={formulir.href}>
-                  Daftar online <span aria-hidden="true">→</span>
-                </Link>
+                <DaftarButton href={formulir.href} eksternal={formulir.eksternal} />
               ) : (
                 <a className="btn btn--solid" href={site.kontak.whatsapp.tautan}>
                   Tanya panitia via WhatsApp

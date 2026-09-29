@@ -24,8 +24,8 @@ describe("getPpdbInfo", () => {
     expect(info.formulir.href).toBeUndefined();
   });
 
-  test("dibuka: matches the mockup bar and allows registration when a form URL exists", () => {
-    const info = getPpdbInfo({ ...base, status: "dibuka", formulirUrl: "/ppdb/daftar" });
+  test("dibuka: matches the mockup bar and links to the external registration page (Linktree)", () => {
+    const info = getPpdbInfo({ ...base, status: "dibuka", pendaftaranUrl: "https://linktr.ee/contoh" });
     expect(info.statusLabel).toBe("Dibuka");
     expect(info.bar).toEqual({
       bagian: ["PPDB 2027/2028 dibuka", "11 Jan – 13 Mar 2027"],
@@ -33,7 +33,20 @@ describe("getPpdbInfo", () => {
     });
     expect(info.formulir.judul).toBe("Formulir pendaftaran online dibuka sampai 13 Maret 2027");
     expect(info.formulir.bisaDaftar).toBe(true);
+    expect(info.formulir.href).toBe("https://linktr.ee/contoh");
+    expect(info.formulir.eksternal).toBe(true);
+  });
+
+  test("dibuka with an internal path: link is not marked external", () => {
+    const info = getPpdbInfo({ ...base, status: "dibuka", pendaftaranUrl: "/ppdb/daftar" });
     expect(info.formulir.href).toBe("/ppdb/daftar");
+    expect(info.formulir.eksternal).toBe(false);
+  });
+
+  test("belum-dibuka ignores a configured link so nobody registers early", () => {
+    const info = getPpdbInfo({ ...base, pendaftaranUrl: "https://linktr.ee/contoh" });
+    expect(info.formulir.bisaDaftar).toBe(false);
+    expect(info.formulir.href).toBeUndefined();
   });
 
   test("dibuka without a form URL: open period but no link to a non-existent form", () => {

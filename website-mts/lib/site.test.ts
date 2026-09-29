@@ -18,6 +18,20 @@ describe("site config", () => {
     expect(result.success).toBe(false);
   });
 
+  test("accepts an https registration link (Linktree) or an internal path", () => {
+    for (const pendaftaranUrl of ["https://linktr.ee/contoh", "/ppdb/daftar"]) {
+      const ok = { ...site, ppdb: { ...site.ppdb, pendaftaranUrl } };
+      expect(siteConfigSchema.safeParse(ok).success).toBe(true);
+    }
+  });
+
+  test("rejects an insecure or malformed registration link", () => {
+    for (const pendaftaranUrl of ["http://linktr.ee/contoh", "javascript:alert(1)", "linktr.ee/contoh"]) {
+      const rusak = { ...site, ppdb: { ...site.ppdb, pendaftaranUrl } };
+      expect(siteConfigSchema.safeParse(rusak).success).toBe(false);
+    }
+  });
+
   test("rejects an unknown PPDB status", () => {
     const rusak = { ...site, ppdb: { ...site.ppdb, status: "buka" } };
     expect(siteConfigSchema.safeParse(rusak).success).toBe(false);
