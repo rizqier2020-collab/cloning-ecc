@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beranda — MTs Contoh Al-Hikmah</title>
+  <meta name="description" content="Wireframe v2 beranda MTs Contoh Al-Hikmah, Kota Contoh (data contoh).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#konten">Langsung ke konten utama</a>
+
+  <header class="site-header site-header--overlay">
+    <div class="container site-header__bar">
+      <a class="wordmark" href="beranda.html" aria-current="page">Al-Hikmah</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-utama">
+        <span class="menu-toggle__bars" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+      <nav class="site-nav" id="menu-utama" aria-label="Menu utama">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="guru-staf.html">Profil</a></li>
+          <li class="nav__item--sub"><a class="nav__link nav__sub" href="guru-staf.html">Guru &amp; Staf</a></li>
+          <li><a class="nav__link" href="#program">Akademik</a></li>
+          <li><a class="nav__link" href="#kabar">Informasi</a></li>
+          <li><a class="nav__link" href="galeri.html">Galeri</a></li>
+          <li><a class="nav__link" href="#kontak">Kontak</a></li>
+          <li><a class="nav__cta" href="#ppdb">Daftar PPDB</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="konten">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-judul">
+      <div class="ph hero__ph" role="img" aria-label="Foto gedung dan kegiatan madrasah (placeholder)">
+        <span class="hero__ph-label" aria-hidden="true">[ foto gedung / kegiatan madrasah — full-bleed ]</span>
+      </div>
+      <div class="container hero__inner">
+        <h1 id="hero-judul" class="hero__title">
+          <span class="hero__wordmark">Al-Hikmah</span>
+          <span class="hero__sub">Madrasah Tsanawiyah · Kota Contoh</span>
+        </h1>
+      </div>
+      <div class="marquee hero__marquee" data-marquee style="--marquee-dur: 40s; --marquee-gap: 1.25rem">
+        <p class="sr-only">Keunggulan: Tahfiz Al-Qur'an, Bahasa Arab, Sains &amp; Teknologi, Pramuka, Hadrah, Olimpiade, Kitab Kuning.</p>
+        <div class="marquee__track" aria-hidden="true">
+          <div class="marquee__group marquee-text">
+            <span>Tahfiz Al-Qur'an</span><span aria-hidden="true">·</span>
+            <span>Bahasa Arab</span><span aria-hidden="true">·</span>
+            <span>Sains &amp; Teknologi</span><span aria-hidden="true">·</span>
+            <span>Pramuka</span><span aria-hidden="true">·</span>
+            <span>Hadrah</span><span aria-hidden="true">·</span>
+            <span>Olimpiade</span><span aria-hidden="true">·</span>
+            <span>Kitab Kuning</span><span aria-hidden="true">·</span>
+          </div>
+          <div class="marquee__group marquee-text" aria-hidden="true">
+            <span>Tahfiz Al-Qur'an</span><span aria-hidden="true">·</span>
+            <span>Bahasa Arab</span><span aria-hidden="true">·</span>
+            <span>Sains &amp; Teknologi</span><span aria-hidden="true">·</span>
+            <span>Pramuka</span><span aria-hidden="true">·</span>
+            <span>Hadrah</span><span aria-hidden="true">·</span>
+            <span>Olimpiade</span><span aria-hidden="true">·</span>
+            <span>Kitab Kuning</span><span aria-hidden="true">·</span>
+          </div>
+        </div>
+        <button class="marquee__toggle" type="button" aria-pressed="false">Jeda</button>
+      </div>
+    </section>
+
+    <!-- BAR PENGUMUMAN PPDB -->
+    <a class="announce" href="#ppdb">
+      <span class="container announce__inner">
+        <span>PPDB 2027/2028 dibuka</span><span aria-hidden="true">·</span>
+        <span>11 Jan – 13 Mar 2027</span><span aria-hidden="true">·</span>
+        <span class="announce__cta">Daftar <span aria-hidden="true">→</span></span>
+      </span>
+    </a>
+
+    <!-- KABAR MADRASAH -->
+    <section class="section" id="kabar" aria-labelledby="kabar-judul">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="kabar-judul" class="label label--muted">Kabar Madrasah</h2>
+          <a class="link-arrow" href="#">Semua berita <span aria-hidden="true">&nbsp;→</span></a>
+        </div>
+        <ul class="news-grid">
+          <li class="news-grid__a">
+            <a class="work zoom" href="#">
+              <div class="media"><div class="ph ph--color ratio-tall" role="img" aria-label="Foto siswa memegang piala MTQ (placeholder)">[ foto berita ]</div></div>
+              <div class="work__body">
+                <h3 class="work__title">Juara 1 MTQ Tingkat Kabupaten</h3>
+                <p class="meta work__meta"><time datetime="2026-09-20">20 Sep 2026</time> · Prestasi</p>
+              </div>
+            </a>
+          </li>
+          <li class="news-grid__b">
+            <a class="work zoom" href="#">
+              <div class="media"><div class="ph ph--color ratio-wide" role="img" aria-label="Foto kegiatan Pekan Bahasa Arab (placeholder)">[ foto berita ]</div></div>
+              <div class="work__body">
+                <h3 class="work__title">Pekan Bahasa Arab 2026 Resmi Dibuka</h3>
+                <p class="meta work__meta"><time datetime="2026-09-15">15 Sep 2026</time> · Kegiatan</p>
+              </div>
+            </a>
+          </li>
+          <li class="news-grid__c">
+            <a class="work zoom" href="#">
+              <div class="media"><div class="ph ph--color ratio-wide" role="img" aria-label="Foto siswa di laboratorium IPA (placeholder)">[ foto berita ]</div></div>
+              <div class="work__body">
+                <h3 class="work__title">Tim KSM Lolos ke Tingkat Provinsi</h3>
+                <p class="meta work__meta"><time datetime="2026-09-08">8 Sep 2026</time> · Prestasi</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PENGUMUMAN -->
+    <section class="section section--rule" aria-labelledby="pengumuman-judul">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="pengumuman-judul" class="label label--muted">Pengumuman</h2>
+          <a class="link-arrow" href="#">Semua pengumuman <span aria-hidden="true">&nbsp;→</span></a>
+        </div>
+        <ul class="notice-list">
+          <li>
+            <a class="notice" href="#">
+              <time class="notice__date" datetime="2026-09-28">28.09.2026</time>
+              <span class="notice__title">Jadwal Penilaian Tengah Semester Ganjil 2026/2027</span>
+              <span class="notice__tag label label--accent">Penting</span>
+            </a>
+          </li>
+          <li>
+            <a class="notice" href="#">
+              <time class="notice__date" datetime="2026-09-24">24.09.2026</time>
+              <span class="notice__title">Libur Peringatan Maulid Nabi Muhammad SAW</span>
+              <span class="notice__tag label label--muted">Umum</span>
+            </a>
+          </li>
+          <li>
+            <a class="notice" href="#">
+              <time class="notice__date" datetime="2026-09-18">18.09.2026</time>
+              <span class="notice__title">Pembayaran Infak Bulanan Melalui Rekening Madrasah</span>
+              <span class="notice__tag label label--muted">Keuangan</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- STATISTIK -->
+    <section class="section section--rule" aria-labelledby="angka-judul">
+      <div class="container">
+        <h2 id="angka-judul" class="label label--muted section-head">Madrasah dalam angka</h2>
+        <dl class="stats">
+          <div class="stat"><dt>Siswa aktif</dt><dd><span data-count="612" aria-hidden="true">612</span><span class="sr-only">612</span></dd></div>
+          <div class="stat"><dt>Guru &amp; staf</dt><dd><span data-count="48" aria-hidden="true">48</span><span class="sr-only">48</span></dd></div>
+          <div class="stat"><dt>Ekstrakurikuler</dt><dd><span data-count="14" aria-hidden="true">14</span><span class="sr-only">14</span></dd></div>
+          <div class="stat"><dt>Akreditasi</dt><dd>A</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- PROGRAM UNGGULAN -->
+    <section class="section section--rule" id="program" aria-labelledby="program-judul">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="program-judul" class="label label--muted">Program Unggulan</h2>
+          <a class="link-arrow" href="#">Kurikulum <span aria-hidden="true">&nbsp;→</span></a>
+        </div>
+        <ol class="programs">
+          <li class="program">
+            <span class="program__num" aria-hidden="true">01</span>
+            <h3 class="h3">Tahfiz Al-Qur'an</h3>
+            <p>Target hafalan minimal 3 juz selama tiga tahun, setoran harian bersama pembimbing dan wisuda tahfiz setiap akhir tahun.</p>
+          </li>
+          <li class="program">
+            <span class="program__num" aria-hidden="true">02</span>
+            <h3 class="h3">Bahasa Arab &amp; Inggris</h3>
+            <p>Hari berbahasa, <i>muhadatsah</i> pagi, dan English Club. Siswa terbiasa berbicara, bukan hanya menghafal kosakata.</p>
+          </li>
+          <li class="program">
+            <span class="program__num" aria-hidden="true">03</span>
+            <h3 class="h3">Sains &amp; Teknologi</h3>
+            <p>Praktikum IPA rutin, kelas robotik, dan pembinaan olimpiade KSM untuk siswa yang berminat pada sains.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- AGENDA -->
+    <section class="section section--rule" aria-labelledby="agenda-judul">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="agenda-judul" class="label label--muted">Agenda</h2>
+          <a class="link-arrow" href="#">Kalender akademik <span aria-hidden="true">&nbsp;→</span></a>
+        </div>
+        <ul class="agenda">
+          <li class="agenda__row">
+            <p class="agenda__date"><time datetime="2026-10-12"><span class="agenda__day">12</span><span class="label label--accent">Okt 2026</span></time></p>
+            <h3 class="h3 agenda__title">Penilaian Tengah Semester Ganjil</h3>
+            <p class="meta agenda__meta">12–17 Okt · 07.15–11.30 WIB · Ruang kelas 7–9</p>
+          </li>
+          <li class="agenda__row">
+            <p class="agenda__date"><time datetime="2026-10-22"><span class="agenda__day">22</span><span class="label label--accent">Okt 2026</span></time></p>
+            <h3 class="h3 agenda__title">Apel Peringatan Hari Santri Nasional</h3>
+            <p class="meta agenda__meta">07.00 WIB · Lapangan madrasah</p>
+          </li>
+          <li class="agenda__row">
+            <p class="agenda__date"><time datetime="2026-11-07"><span class="agenda__day">07</span><span class="label label--accent">Nov 2026</span></time></p>
+            <h3 class="h3 agenda__title">Rapat Wali Murid Kelas 9</h3>
+            <p class="meta agenda__meta">08.30 WIB · Aula madrasah</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- EKSTRAKURIKULER -->
+    <section class="section section--rule ekskul" aria-labelledby="ekskul-judul">
+      <h2 id="ekskul-judul" class="label label--muted ekskul__title">Ekstrakurikuler</h2>
+      <div class="marquee" data-marquee style="--marquee-dur: 50s; --marquee-gap: 1.25rem">
+        <ul class="sr-only">
+          <li>Pramuka</li><li>PMR</li><li>Hadrah</li><li>Kaligrafi</li><li>Futsal</li>
+          <li>Paskibra</li><li>Robotik</li><li>Qiraah</li><li>Pencak Silat</li><li>English Club</li>
+        </ul>
+        <div class="marquee__track" aria-hidden="true">
+          <div class="marquee__group">
+            <span class="tile"><span class="tile__num">01</span>Pramuka</span>
+            <span class="tile"><span class="tile__num">02</span>PMR</span>
+            <span class="tile"><span class="tile__num">03</span>Hadrah</span>
+            <span class="tile"><span class="tile__num">04</span>Kaligrafi</span>
+            <span class="tile"><span class="tile__num">05</span>Futsal</span>
+            <span class="tile"><span class="tile__num">06</span>Paskibra</span>
+            <span class="tile"><span class="tile__num">07</span>Robotik</span>
+            <span class="tile"><span class="tile__num">08</span>Qiraah</span>
+            <span class="tile"><span class="tile__num">09</span>Pencak Silat</span>
+            <span class="tile"><span class="tile__num">10</span>English Club</span>
+          </div>
+          <div class="marquee__group" aria-hidden="true">
+            <span class="tile"><span class="tile__num">01</span>Pramuka</span>
+            <span class="tile"><span class="tile__num">02</span>PMR</span>
+            <span class="tile"><span class="tile__num">03</span>Hadrah</span>
+            <span class="tile"><span class="tile__num">04</span>Kaligrafi</span>
+            <span class="tile"><span class="tile__num">05</span>Futsal</span>
+            <span class="tile"><span class="tile__num">06</span>Paskibra</span>
+            <span class="tile"><span class="tile__num">07</span>Robotik</span>
+            <span class="tile"><span class="tile__num">08</span>Qiraah</span>
+            <span class="tile"><span class="tile__num">09</span>Pencak Silat</span>
+            <span class="tile"><span class="tile__num">10</span>English Club</span>
+          </div>
+        </div>
+        <button class="marquee__toggle" type="button" aria-pressed="false">Jeda</button>
+      </div>
+    </section>
+
+    <!-- PPDB -->
+    <section class="section section--canvas ppdb" id="ppdb" aria-labelledby="ppdb-judul">
+      <div class="container ppdb__grid">
+        <div>
+          <p class="label label--accent">Penerimaan peserta didik baru</p>
+          <h2 id="ppdb-judul" class="display ppdb__title">PPDB<br>2027/2028</h2>
+          <p class="lead ppdb__lead">Kuota 192 siswa untuk 6 rombel kelas 7. Pendaftaran online, gratis, dan bisa dari HP.</p>
+          <div class="ppdb__actions">
+            <a class="btn btn--solid" href="#">Daftar online <span aria-hidden="true">→</span></a>
+            <a class="btn btn--line" href="#">Unduh brosur <span class="sr-only">(PDF)</span></a>
+          </div>
+        </div>
+        <ol class="steps">
+          <li class="step">
+            <span class="step__num" aria-hidden="true">01</span>
+            <div>
+              <h3 class="h3">Pendaftaran online</h3>
+              <p class="meta"><time datetime="2027-01-11">11 Jan</time> – <time datetime="2027-03-13">13 Mar 2027</time></p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__num" aria-hidden="true">02</span>
+            <div>
+              <h3 class="h3">Tes baca Al-Qur'an &amp; wawancara</h3>
+              <p class="meta"><time datetime="2027-03-20">20 Mar 2027</time></p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__num" aria-hidden="true">03</span>
+            <div>
+              <h3 class="h3">Pengumuman &amp; daftar ulang</h3>
+              <p class="meta"><time datetime="2027-04-03">3 Apr</time> – <time datetime="2027-04-10">10 Apr 2027</time></p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- KONTAK -->
+    <section class="section" id="kontak" aria-labelledby="kontak-judul">
+      <div class="container">
+        <h2 id="kontak-judul" class="label label--accent section-head">Kontak</h2>
+        <dl class="contact-grid">
+          <div class="contact-item"><dt class="label label--accent">WhatsApp</dt><dd><a href="https://wa.me/6281200000000">0812-0000-0000</a></dd></div>
+          <div class="contact-item"><dt class="label label--accent">Email</dt><dd><a href="mailto:info@mtscontoh.sch.id">info@mtscontoh.sch.id</a></dd></div>
+          <div class="contact-item"><dt class="label label--accent">Instagram</dt><dd><a href="#">@mtscontohalhikmah</a></dd></div>
+          <div class="contact-item"><dt class="label label--accent">YouTube</dt><dd><a href="#">MTs Contoh Al-Hikmah</a></dd></div>
+          <div class="contact-item"><dt class="label label--accent">Alamat · Google Maps</dt><dd>Jl. Pendidikan No. 1, Kota Contoh<br><a class="link-arrow" href="#">Lihat di Google Maps <span aria-hidden="true">&nbsp;→</span></a></dd></div>
+          <div class="contact-item"><dt class="label label--accent">Jam layanan</dt><dd>Senin–Jumat 07.00–14.00 WIB<br>Sabtu 07.00–12.00 WIB</dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__grid">
+      <a class="wordmark" href="beranda.html">Al-Hikmah</a>
+      <nav aria-label="Tautan footer">
+        <ul class="footer-links">
+          <li><a href="guru-staf.html">Profil</a></li>
+          <li><a href="#program">Akademik</a></li>
+          <li><a href="#kabar">Informasi</a></li>
+          <li><a href="galeri.html">Galeri</a></li>
+          <li><a href="#ppdb">PPDB</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
+      </nav>
+      <p class="footer-legal">NSM 121200000000 · NPSN 00000000<br>© 2026 MTs Contoh Al-Hikmah</p>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var doc = document.documentElement;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    doc.classList.add('js');
+
+    /* Menu HP */
+    var toggle = document.querySelector('.menu-toggle');
+    var nav = document.getElementById('menu-utama');
+    function setMenu(open) {
+      toggle.setAttribute('aria-expanded', String(open));
+      nav.classList.toggle('is-open', open);
+    }
+    toggle.addEventListener('click', function () { setMenu(toggle.getAttribute('aria-expanded') !== 'true'); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { setMenu(false); toggle.focus(); }
+    });
+    nav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+
+    /* Tombol jeda marquee (WCAG 2.2.2) */
+    document.querySelectorAll('[data-marquee]').forEach(function (m) {
+      var btn = m.querySelector('.marquee__toggle');
+      btn.addEventListener('click', function () {
+        var paused = m.classList.toggle('is-paused');
+        btn.setAttribute('aria-pressed', String(paused));
+        btn.textContent = paused ? 'Putar' : 'Jeda';
+      });
+    });
+
+    /* Hitung naik angka statistik */
+    var nums = document.querySelectorAll('[data-count]');
+    if (reduce || !('IntersectionObserver' in window)) return;
+    function run(el) {
+      var target = +el.dataset.count, start = null, dur = 1400;
+      function tick(t) {
+        if (!start) start = t;
+        var p = Math.min((t - start) / dur, 1);
+        el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { run(en.target); io.unobserve(en.target); } });
+    }, { threshold: 0.6 });
+    nums.forEach(function (el) { el.textContent = '0'; io.observe(el); });
+  })();
+  </script>
+</body>
+</html>

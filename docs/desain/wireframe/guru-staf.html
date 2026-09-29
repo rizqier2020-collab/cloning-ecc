@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guru &amp; Staf — MTs Contoh Al-Hikmah</title>
+  <meta name="description" content="Wireframe v2 halaman guru dan staf MTs Contoh Al-Hikmah, Kota Contoh (data contoh).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#konten">Langsung ke konten utama</a>
+
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="wordmark" href="beranda.html">Al-Hikmah</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-utama">
+        <span class="menu-toggle__bars" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+      <nav class="site-nav" id="menu-utama" aria-label="Menu utama">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="guru-staf.html" aria-current="true">Profil</a></li>
+          <li class="nav__item--sub"><a class="nav__link nav__sub" href="guru-staf.html" aria-current="page">Guru &amp; Staf</a></li>
+          <li><a class="nav__link" href="beranda.html#program">Akademik</a></li>
+          <li><a class="nav__link" href="beranda.html#kabar">Informasi</a></li>
+          <li><a class="nav__link" href="galeri.html">Galeri</a></li>
+          <li><a class="nav__link" href="beranda.html#kontak">Kontak</a></li>
+          <li><a class="nav__cta" href="beranda.html#ppdb">Daftar PPDB</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="konten">
+    <section class="section page-intro" aria-labelledby="pimpinan-judul">
+      <div class="container">
+        <p class="label label--muted">Profil / Guru &amp; Staf</p>
+        <h1 class="sr-only">Guru &amp; Staf MTs Contoh Al-Hikmah</h1>
+        <h2 id="pimpinan-judul" class="h2 leaders__title">Pimpinan Madrasah</h2>
+        <ul class="leaders">
+          <li class="leader">
+            <div class="ph ph--bw ratio-portrait" role="img" aria-label="Foto potret H. Ahmad Fulan, S.Pd.I., M.Pd. (placeholder)">[ foto B/W cutout ]</div>
+            <div class="leader__bio reveal" style="--delay: 0ms">
+              <h3 class="leader__name">H. Ahmad Fulan, S.Pd.I., M.Pd.</h3>
+              <p class="label label--accent">Kepala Madrasah</p>
+              <p class="meta">Mengajar sejak 2005</p>
+            </div>
+          </li>
+          <li class="leader">
+            <div class="ph ph--bw ratio-portrait" role="img" aria-label="Foto potret Siti Aminah, S.Pd. (placeholder)">[ foto B/W cutout ]</div>
+            <div class="leader__bio reveal" style="--delay: 120ms">
+              <h3 class="leader__name">Siti Aminah, S.Pd.</h3>
+              <p class="label label--accent">Waka Kurikulum</p>
+              <p class="meta">Mengajar sejak 2009</p>
+            </div>
+          </li>
+          <li class="leader">
+            <div class="ph ph--bw ratio-portrait" role="img" aria-label="Foto potret Muhammad Rizal, S.Pd. (placeholder)">[ foto B/W cutout ]</div>
+            <div class="leader__bio reveal" style="--delay: 240ms">
+              <h3 class="leader__name">Muhammad Rizal, S.Pd.</h3>
+              <p class="label label--accent">Waka Kesiswaan</p>
+              <p class="meta">Mengajar sejak 2012</p>
+            </div>
+          </li>
+          <li class="leader">
+            <div class="ph ph--bw ratio-portrait" role="img" aria-label="Foto potret Drs. Abdul Karim (placeholder)">[ foto B/W cutout ]</div>
+            <div class="leader__bio reveal" style="--delay: 360ms">
+              <h3 class="leader__name">Drs. Abdul Karim</h3>
+              <p class="label label--accent">Waka Sarpras</p>
+              <p class="meta">Mengajar sejak 1998</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section--rule" aria-labelledby="tim-judul">
+      <div class="container">
+        <h2 id="tim-judul" class="h2">Guru &amp; Staf</h2>
+        <p class="note team__note">Geser ke samping atau pakai tombol panah untuk melihat semua. Arahkan kursor atau fokus pada foto untuk melihat nama dan tugas.</p>
+        <div class="carousel" data-carousel>
+          <div class="carousel__head">
+            <h3 id="row-umum" class="carousel__title">Guru Mata Pelajaran Umum</h3>
+            <div class="carousel__controls">
+              <button class="round-btn" type="button" data-dir="-1" aria-controls="track-umum" aria-label="Geser ke kiri: Guru Mata Pelajaran Umum">‹</button>
+              <button class="round-btn" type="button" data-dir="1" aria-controls="track-umum" aria-label="Geser ke kanan: Guru Mata Pelajaran Umum">›</button>
+            </div>
+          </div>
+          <ul class="carousel__track" id="track-umum" tabindex="0" aria-labelledby="row-umum">
+            <li>
+              <figure class="person">
+                <div class="ph ph--bw ratio-portrait" role="img" aria-label="Foto Dewi Lestari, S.Pd. (placeholder)">[ foto B/W ]</div>
+                <figcaption class="person__cap"><span class="person__name">Dewi Lestari, S.Pd.</span><span class="person__role">Matematika</span></figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure class="person">
+                <div class="ph ph--bw ratio-portrait" role="img" aria-label="Foto Budi Santoso, S.Pd. (placeholder)">[ foto B/W ]</div>
+                <figcaption class="person__cap"><span class="person__name">Budi Santoso, S.Pd.</span><span class="person__role">IPA</span></figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure class="person">
+                <div class="ph ph--bw ratio-portrait" role="img" aria-label="Foto Rina Wulandari, S.Pd. (placeholder)">[ foto B/W ]</div>
+                <figcaption class="person__cap"><span class="person__name">Rina Wulandari, S.Pd.</span><span class="person__role">Bahasa Indonesia</span></figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure class="person">
+                <div class="ph ph--bw ratio-portrait" role="img" aria-label="Foto Agus Pratama, S.Pd. (placeholder)">[ foto B/W ]</div>
+                <figcaption class="person__cap"><span class="person__name">Agus Pratama, S.Pd.</span><span class="person__role">IPS</span></figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure class="person">
+                <div class="ph ph--bw ratio-portrait" role="img" aria-label="Foto Nur Hidayah, S.Pd. (placeholder)">[ foto B/W ]</div>
+                <figcaption class="person__cap"><span class="person__name">Nur Hidayah, S.Pd.</span><span class="person__role">Bahasa Inggris</span></figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure class="person">
+                <div class="ph ph--bw ratio-portrait" role="img" aria-label="Foto Fajar Nugroho, S.Pd. (placeholder)">[ foto B/W ]</div>
+                <figcaption class="person__cap"><span class="person__name">Fajar Nugroho, S.Pd.</span><span class="person__role">PJOK</span></figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure class="person">
+                <div class="ph ph--bw ratio-portrait" role="img" aria-label="Foto Maya Sari, S.Kom. (placeholder)">[ foto B/W ]</div>
+                <figcaption class="person__cap"><span class="person__name">Maya Sari, S.Kom.</span><span class="person__role">Informatika</span></figcaption>
+              </figure>
+            </li>
+          </ul>
+        </div>
+        <div class="carousel" data-carousel>
+          <div class="carousel__head">
+            <h3 id="row-pai" class="carousel__title">Guru PAI &amp; Bahasa Arab</h3>
+            <div class="carousel__controls">
+              <button class="round-btn" type="button" data-dir="-1" aria-controls="track-pai" aria-label="Geser ke kiri: Guru PAI &amp; Bahasa Arab">‹</button>
+              <button class="round-btn" type="button" data-dir="1" aria-controls="track-pai" aria-label="Geser ke kanan: Guru PAI &amp; Bahasa Arab">›</button>
+            </div>
+          </div>
+          <ul class="carousel__track" id="track-pai" tabindex="0" aria-labelledby="row-pai">
+            <li>
+              <figure class="person">
+                <div class="ph ph--bw ratio-portrait" role="img" aria-label="Foto Ust. Hasan Basri, Lc. (placeholder)">[ foto B/W ]</div>
+                <figcaption class="person__cap"><span class="person__name">Ust. Hasan Basri, Lc.</span><span class="person__role">Bahasa Arab</span></figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure class="person">
+                <div class="ph ph--bw ratio-portrait" role="img" aria-label="Foto Ustzh. Fatimah Zahra, S.Ag. (placeholder)">[ foto B/W ]</div>
+                <figcaption class="person__cap"><span class="person__name">Ustzh. Fatimah Zahra, S.Ag.</span><span class="person__role">Al-Qur'an Hadis</span></figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure class="person">
+                <div class="ph ph--bw ratio-portrait" role="img" aria-label="Foto Ust. Ridwan Hakim, S.Pd.I. (placeholder)">[ foto B/W ]</div>
+                <figcaption class="person__cap"><span class="person__name">Ust. Ridwan Hakim, S.Pd.I.</span><span class="person__role">Fikih</span></figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure class="person">
+                <div class="ph ph--bw ratio-portrait" role="img" aria-label="Foto Ustzh. Khadijah, S.Pd.I. (placeholder)">[ foto B/W ]</div>
+                <figcaption class="person__cap"><span class="person__name">Ustzh. Khadijah, S.Pd.I.</span><span class="person__role">Akidah Akhlak</span></figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure class="person">
+                <div class="ph ph--bw ratio-portrait" role="img" aria-label="Foto Ust. Umar Faruq, S.H.I. (placeholder)">[ foto B/W ]</div>
+                <figcaption class="person__cap"><span class="person__name">Ust. Umar Faruq, S.H.I.</span><span class="person__role">SKI</span></figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure class="person">
+                <div class="ph ph--bw ratio-portrait" role="img" aria-label="Foto Ust. Zainal Abidin, Al-Hafiz (placeholder)">[ foto B/W ]</div>
+                <figcaption class="person__cap"><span class="person__name">Ust. Zainal Abidin, Al-Hafiz</span><span class="person__role">Pembina Tahfiz</span></figcaption>
+              </figure>
+            </li>
+          </ul>
+        </div>
+        <div class="carousel" data-carousel>
+          <div class="carousel__head">
+            <h3 id="row-tendik" class="carousel__title">Tenaga Kependidikan</h3>
+            <div class="carousel__controls">
+              <button class="round-btn" type="button" data-dir="-1" aria-controls="track-tendik" aria-label="Geser ke kiri: Tenaga Kependidikan">‹</button>
+              <button class="round-btn" type="button" data-dir="1" aria-controls="track-tendik" aria-label="Geser ke kanan: Tenaga Kependidikan">›</button>
+            </div>
+          </div>
+          <ul class="carousel__track" id="track-tendik" tabindex="0" aria-labelledby="row-tendik">
+            <li>
+              <figure class="person">
+                <div class="ph ph--bw ratio-portrait" role="img" aria-label="Foto Sri Handayani, S.E. (placeholder)">[ foto B/W ]</div>
+                <figcaption class="person__cap"><span class="person__name">Sri Handayani, S.E.</span><span class="person__role">Kepala Tata Usaha</span></figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure class="person">
+                <div class="ph ph--bw ratio-portrait" role="img" aria-label="Foto Andi Saputra (placeholder)">[ foto B/W ]</div>
+                <figcaption class="person__cap"><span class="person__name">Andi Saputra</span><span class="person__role">Operator EMIS</span></figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure class="person">
+                <div class="ph ph--bw ratio-portrait" role="img" aria-label="Foto Lina Marlina, S.Pd. (placeholder)">[ foto B/W ]</div>
+                <figcaption class="person__cap"><span class="person__name">Lina Marlina, S.Pd.</span><span class="person__role">Pustakawan</span></figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure class="person">
+                <div class="ph ph--bw ratio-portrait" role="img" aria-label="Foto Yusuf Maulana (placeholder)">[ foto B/W ]</div>
+                <figcaption class="person__cap"><span class="person__name">Yusuf Maulana</span><span class="person__role">Bendahara</span></figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure class="person">
+                <div class="ph ph--bw ratio-portrait" role="img" aria-label="Foto Rahmat Hidayat (placeholder)">[ foto B/W ]</div>
+                <figcaption class="person__cap"><span class="person__name">Rahmat Hidayat</span><span class="person__role">Laboran IPA</span></figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure class="person">
+                <div class="ph ph--bw ratio-portrait" role="img" aria-label="Foto Pak Slamet (placeholder)">[ foto B/W ]</div>
+                <figcaption class="person__cap"><span class="person__name">Pak Slamet</span><span class="person__role">Penjaga Madrasah</span></figcaption>
+              </figure>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__grid">
+      <a class="wordmark" href="beranda.html">Al-Hikmah</a>
+      <nav aria-label="Tautan footer">
+        <ul class="footer-links">
+          <li><a href="guru-staf.html">Profil</a></li>
+          <li><a href="beranda.html#program">Akademik</a></li>
+          <li><a href="beranda.html#kabar">Informasi</a></li>
+          <li><a href="galeri.html">Galeri</a></li>
+          <li><a href="beranda.html#ppdb">PPDB</a></li>
+          <li><a href="beranda.html#kontak">Kontak</a></li>
+        </ul>
+      </nav>
+      <p class="footer-legal">NSM 121200000000 · NPSN 00000000<br>© 2026 MTs Contoh Al-Hikmah</p>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var doc = document.documentElement;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    doc.classList.add('js');
+
+    /* Menu HP */
+    var toggle = document.querySelector('.menu-toggle');
+    var nav = document.getElementById('menu-utama');
+    function setMenu(open) {
+      toggle.setAttribute('aria-expanded', String(open));
+      nav.classList.toggle('is-open', open);
+    }
+    toggle.addEventListener('click', function () { setMenu(toggle.getAttribute('aria-expanded') !== 'true'); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { setMenu(false); toggle.focus(); }
+    });
+
+    /* Carousel: tombol ‹ › + status ujung */
+    document.querySelectorAll('[data-carousel]').forEach(function (c) {
+      var track = c.querySelector('.carousel__track');
+      var btns = c.querySelectorAll('.round-btn');
+      function update() {
+        var max = track.scrollWidth - track.clientWidth - 2;
+        /* aria-disabled (bukan disabled) agar fokus keyboard tidak hilang di ujung */
+        btns[0].setAttribute('aria-disabled', String(track.scrollLeft <= 2));
+        btns[1].setAttribute('aria-disabled', String(track.scrollLeft >= max));
+      }
+      btns.forEach(function (b) {
+        b.addEventListener('click', function () {
+          if (b.getAttribute('aria-disabled') === 'true') return;
+          track.scrollBy({ left: +b.dataset.dir * track.clientWidth * 0.8, behavior: reduce ? 'auto' : 'smooth' });
+        });
+      });
+      track.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    });
+
+    /* Scroll reveal bio pimpinan */
+    if (reduce || !('IntersectionObserver' in window)) return;
+    doc.classList.add('reveal-ready');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-visible'); io.unobserve(en.target); } });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  })();
+  </script>
+</body>
+</html>
